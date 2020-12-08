@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:knowledge_checker/globals.dart';
 import 'package:knowledge_checker/screens/decoration_shapes.dart';
+import 'package:knowledge_checker/services/auth.dart';
 
 class SignIn extends StatefulWidget {
   @override
@@ -8,6 +9,9 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+  final AuthService _auth = AuthService(); 
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +24,7 @@ class _SignInState extends State<SignIn> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 SizedBox(
-                  height: 250,
+                  height: 150,
                 ),
                 Padding(
                   padding: EdgeInsets.all(20),
@@ -48,11 +52,48 @@ class _SignInState extends State<SignIn> {
                         child: Column(
                           children: <Widget>[
                             SizedBox(
-                              height: 50,
+                              height: 0,
                             ),
+                            
                             Container(
                               child: Column(
                                 children: <Widget>[
+                                  Container(
+                                    margin: EdgeInsets.only(
+                                        left: 50.0, right: 50.0),
+                                    child: Material(
+                                      shadowColor: Colors.black,
+                                      elevation: 10.0,
+                                      borderRadius: BorderRadius.circular(30.0),
+                                      child: Align(
+                                        alignment: Alignment.bottomLeft,
+                                        child: Container(
+                                          padding: EdgeInsets.only(left: 25.0),
+                                          child: TextField(
+                                            autocorrect: false,
+                                            enableSuggestions: false,
+                                            decoration: InputDecoration(
+                                              border: OutlineInputBorder(
+                                                  borderSide: BorderSide.none),
+                                              hintText: 'Email',
+                                              suffixIcon: Padding(
+                                                padding:
+                                                    const EdgeInsetsDirectional
+                                                        .only(end: 12.0),
+                                                child: Icon(
+                                                  Icons.account_circle_outlined,
+                                                  color: Colors.lightBlue,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 15,
+                                  ),
                                   Container(
                                     margin: EdgeInsets.only(
                                         left: 50.0, right: 50.0),
@@ -130,7 +171,7 @@ class _SignInState extends State<SignIn> {
                               child: Container(
                                 // margin: EdgeInsets.only(right: 60.0),
                                 child: RaisedButton(
-                                  onPressed: () {},
+                                  onPressed: () async {},
                                   shape: RoundedRectangleBorder(
                                       borderRadius:
                                           BorderRadius.circular(80.0)),
