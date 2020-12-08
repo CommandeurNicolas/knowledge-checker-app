@@ -58,7 +58,7 @@ class _SignInState extends State<SignIn> {
                                 children: <Widget>[
                                   Container(
                                     margin: EdgeInsets.only(
-                                        left: 50.0, right: 50.0),
+                                        left: 10.0, right: 10.0),
                                     child: Material(
                                       shadowColor: Colors.black,
                                       elevation: 10.0,
@@ -66,7 +66,7 @@ class _SignInState extends State<SignIn> {
                                       child: Align(
                                         alignment: Alignment.bottomLeft,
                                         child: Container(
-                                          padding: EdgeInsets.only(left: 25.0),
+                                          padding: EdgeInsets.only(left: 5.0),
                                           child: TextField(
                                             autocorrect: false,
                                             enableSuggestions: false,
@@ -77,7 +77,7 @@ class _SignInState extends State<SignIn> {
                                               suffixIcon: Padding(
                                                 padding:
                                                     const EdgeInsetsDirectional
-                                                        .only(end: 12.0),
+                                                        .only(end: 0.0),
                                                 child: Icon(
                                                   Icons.mail_outline_rounded,
                                                   color: Colors.lightBlue,
@@ -94,7 +94,7 @@ class _SignInState extends State<SignIn> {
                                   ),
                                   Container(
                                     margin: EdgeInsets.only(
-                                        left: 50.0, right: 50.0),
+                                        left: 40.0, right: 40.0),
                                     child: Material(
                                       shadowColor: Colors.black,
                                       elevation: 10.0,
@@ -130,7 +130,7 @@ class _SignInState extends State<SignIn> {
                                   ),
                                   Container(
                                     margin: EdgeInsets.only(
-                                        bottom: 10.0, left: 50.0, right: 50.0),
+                                        bottom: 0, left: 40.0, right: 40.0),
                                     child: Material(
                                       shadowColor: Colors.black,
                                       elevation: 10.0,
