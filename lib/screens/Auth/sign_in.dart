@@ -9,8 +9,7 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-  final AuthService _auth = AuthService(); 
-
+  final AuthService _auth = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +53,6 @@ class _SignInState extends State<SignIn> {
                             SizedBox(
                               height: 0,
                             ),
-                            
                             Container(
                               child: Column(
                                 children: <Widget>[
@@ -81,7 +79,7 @@ class _SignInState extends State<SignIn> {
                                                     const EdgeInsetsDirectional
                                                         .only(end: 12.0),
                                                 child: Icon(
-                                                  Icons.account_circle_outlined,
+                                                  Icons.mail_outline_rounded,
                                                   color: Colors.lightBlue,
                                                 ),
                                               ),
@@ -118,7 +116,7 @@ class _SignInState extends State<SignIn> {
                                                         .only(end: 12.0),
                                                 child: Icon(
                                                   Icons.account_circle_outlined,
-                                                  color: Colors.lightBlue,
+                                                  color: Colors.lightGreen,
                                                 ),
                                               ),
                                             ),
@@ -152,7 +150,7 @@ class _SignInState extends State<SignIn> {
                                                       .only(end: 12.0),
                                               child: Icon(
                                                 Icons.lock_outline_rounded,
-                                                color: Colors.lightGreen,
+                                                color: Colors.teal,
                                               ),
                                             ),
                                           ),
@@ -171,7 +169,15 @@ class _SignInState extends State<SignIn> {
                               child: Container(
                                 // margin: EdgeInsets.only(right: 60.0),
                                 child: RaisedButton(
-                                  onPressed: () async {},
+                                  onPressed: () async {
+                                    dynamic result = await _auth.signInAnom();
+                                    if (result == null) {
+                                      print('error sign');
+                                    } else {
+                                      print('signed in');
+                                      print(result);
+                                    }
+                                  },
                                   shape: RoundedRectangleBorder(
                                       borderRadius:
                                           BorderRadius.circular(80.0)),
