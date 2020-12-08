@@ -7,7 +7,12 @@ class AuthService {
   Future signInAnom() async {
     try {
       AuthResult result = await _auth.signInAnonymously();
-    } catch (e) {}
+      FirebaseUser user = result.user;
+      return user;
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
   }
 // sign in with email & pass
 
