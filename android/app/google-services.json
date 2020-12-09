@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "974033021176",
+    "project_id": "knowledge-checker-9347f",
+    "storage_bucket": "knowledge-checker-9347f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:974033021176:android:0c4d52f7e83347c1d4330d",
+        "android_client_info": {
+          "package_name": "com.knowledge_checker_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "974033021176-7j7fonhu733ld28jq5bconp80j0o0d78.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyqO7suGhvtpH0bTcMN6fpQCKDtdgQUHY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "974033021176-7j7fonhu733ld28jq5bconp80j0o0d78.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
