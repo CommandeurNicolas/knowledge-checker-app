@@ -2,9 +2,10 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:knowledge_checker/screens/Auth/sign_in.dart';
 import 'package:knowledge_checker/services/auth.dart';
+import 'package:knowledge_checker/view_model/href_text.dart';
 
-import 'signup.dart';
-import '../decoration_shapes.dart';
+import 'sign_in.dart';
+import '../../view_model/decoration_shapes.dart';
 import '../../globals.dart';
 
 class LogIn extends StatefulWidget {
@@ -22,7 +23,6 @@ class _LogInState extends State<LogIn> {
   String password = '';
   String username = '';
   String error = '';
-
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +89,9 @@ class _LogInState extends State<LogIn> {
                                             child: TextFormField(
                                               autocorrect: false,
                                               enableSuggestions: false,
-                                              validator: (val) => val.isEmpty ? 'Enter an email' : null,
+                                              validator: (val) => val.isEmpty
+                                                  ? 'Enter an email'
+                                                  : null,
                                               onChanged: (val) {
                                                 setState(() {
                                                   email = val;
@@ -133,7 +135,9 @@ class _LogInState extends State<LogIn> {
                                             child: TextFormField(
                                               autocorrect: false,
                                               enableSuggestions: false,
-                                              validator: (val) => val.length < 5 ? 'Enter an username longer than 5 characters' : null,
+                                              validator: (val) => val.length < 5
+                                                  ? 'Enter an username longer than 5 characters'
+                                                  : null,
                                               onChanged: (val) {
                                                 setState(() {
                                                   username = val;
@@ -176,7 +180,9 @@ class _LogInState extends State<LogIn> {
                                           child: TextFormField(
                                             obscureText: true,
                                             autocorrect: false,
-                                            validator: (val) => val.length < 8 ? 'Enter a password longer than 8 characters' : null,
+                                            validator: (val) => val.length < 8
+                                                ? 'Enter a password longer than 8 characters'
+                                                : null,
                                             onChanged: (val) {
                                               setState(() {
                                                 password = val;
@@ -223,15 +229,15 @@ class _LogInState extends State<LogIn> {
                                   child: RaisedButton(
                                     onPressed: () async {
                                       if (_formKey.currentState.validate()) {
-                                          dynamic result = await _auth.login(
-                                              email, password, username);
-                                          if (result == null) {
-                                            setState(() {
-                                              error = 'Error';
-                                              // TODO : #12 16:00
-                                            });
-                                          }
+                                        dynamic result = await _auth.login(
+                                            email, password, username);
+                                        if (result == null) {
+                                          setState(() {
+                                            error = 'Error';
+                                            // TODO : #12 16:00
+                                          });
                                         }
+                                      }
                                     },
                                     shape: RoundedRectangleBorder(
                                         borderRadius:
@@ -301,34 +307,6 @@ class _LogInState extends State<LogIn> {
             DecorationShapes()
           ],
         ),
-      ),
-    );
-  }
-}
-
-class HrefText extends StatelessWidget {
-  final String text;
-  final StatelessWidget widget;
-
-  HrefText({Key key, this.text, this.widget}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return new RichText(
-      text: new TextSpan(
-        children: [
-          new TextSpan(
-            text: text,
-            style: new TextStyle(color: Colors.blue, fontSize: 15),
-            recognizer: new TapGestureRecognizer()
-              ..onTap = () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => widget),
-                );
-              },
-          ),
-        ],
       ),
     );
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../decoration_shapes.dart';
+import '../../view_model/decoration_shapes.dart';
 import '../../globals.dart';
 
 class SignUp extends StatelessWidget {
@@ -135,10 +135,12 @@ class SignUp extends StatelessWidget {
                                   child: Ink(
                                     decoration: BoxDecoration(
                                       gradient: LinearGradient(
-                                        begin: Alignment.centerLeft,
-                                        end: Alignment.centerRight,
-                                        colors: [darkblue, Color(0xff4AC496)]
-                                      ),
+                                          begin: Alignment.centerLeft,
+                                          end: Alignment.centerRight,
+                                          colors: [
+                                            darkblue,
+                                            Color(0xff4AC496)
+                                          ]),
                                       borderRadius: BorderRadius.circular(30.0),
                                     ),
                                     child: Container(

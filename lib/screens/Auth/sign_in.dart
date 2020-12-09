@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:knowledge_checker/globals.dart';
-import 'package:knowledge_checker/screens/decoration_shapes.dart';
+import 'package:knowledge_checker/view_model/decoration_shapes.dart';
 import 'package:knowledge_checker/services/auth.dart';
 
 class SignIn extends StatefulWidget {
@@ -26,7 +26,6 @@ class _SignInState extends State<SignIn> {
         width: double.infinity,
         child: Stack(
           children: [
-            DecorationShapes(),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -292,6 +291,7 @@ class _SignInState extends State<SignIn> {
                 ),
               ],
             ),
+            DecorationShapes(),
           ],
         ),
       ),
