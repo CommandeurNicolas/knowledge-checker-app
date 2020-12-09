@@ -17,6 +17,7 @@ class _SignInState extends State<SignIn> {
   String email = '';
   String password = '';
   String username = '';
+  String error = '';
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +80,9 @@ class _SignInState extends State<SignIn> {
                                               padding:
                                                   EdgeInsets.only(left: 5.0),
                                               child: TextFormField(
-                                                validator: (val) => val.isEmpty ? 'Enter an email' : null,
+                                                validator: (val) => val.isEmpty
+                                                    ? 'Enter an email'
+                                                    : null,
                                                 autocorrect: false,
                                                 enableSuggestions: false,
                                                 onChanged: (val) {
@@ -125,7 +128,10 @@ class _SignInState extends State<SignIn> {
                                               padding:
                                                   EdgeInsets.only(left: 5.0),
                                               child: TextFormField(
-                                                validator: (val) => val.length < 5 ? 'Enter an username longer than 5 characters' : null,
+                                                validator: (val) => val.length <
+                                                        5
+                                                    ? 'Enter an username longer than 5 characters'
+                                                    : null,
                                                 autocorrect: false,
                                                 enableSuggestions: false,
                                                 onChanged: (val) {
@@ -168,7 +174,9 @@ class _SignInState extends State<SignIn> {
                                           child: Container(
                                             padding: EdgeInsets.only(left: 5.0),
                                             child: TextFormField(
-                                              validator: (val) => val.length < 8 ? 'Enter a password longer than 8 characters' : null,
+                                              validator: (val) => val.length < 8
+                                                  ? 'Enter a password longer than 8 characters'
+                                                  : null,
                                               obscureText: true,
                                               autocorrect: false,
                                               onChanged: (val) {
@@ -208,7 +216,14 @@ class _SignInState extends State<SignIn> {
                                     child: RaisedButton(
                                       onPressed: () async {
                                         if (_formKey.currentState.validate()) {
-                                          print(email);
+                                          dynamic result = await _auth.register(
+                                              email, password, username);
+                                          if (result == null) {
+                                            setState(() {
+                                              error = 'Error';
+                                              // TODO : #12 16:00
+                                            });
+                                          }
                                         }
                                       },
                                       shape: RoundedRectangleBorder(

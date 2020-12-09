@@ -21,6 +21,9 @@ class _LogInState extends State<LogIn> {
   String email = '';
   String password = '';
   String username = '';
+  String error = '';
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -220,8 +223,15 @@ class _LogInState extends State<LogIn> {
                                   child: RaisedButton(
                                     onPressed: () async {
                                       if (_formKey.currentState.validate()) {
-                                        print(email);
-                                      }
+                                          dynamic result = await _auth.login(
+                                              email, password, username);
+                                          if (result == null) {
+                                            setState(() {
+                                              error = 'Error';
+                                              // TODO : #12 16:00
+                                            });
+                                          }
+                                        }
                                     },
                                     shape: RoundedRectangleBorder(
                                         borderRadius:
