@@ -1,11 +1,23 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:knowledge_checker/screens/Auth/sign_in.dart';
+import 'package:knowledge_checker/services/auth.dart';
 
 import 'signup.dart';
 import '../decoration_shapes.dart';
 import '../../globals.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
+  @override
+  _LoginState createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  final AuthService _auth = AuthService();
+
+  String email = '';
+  String password = '';
+  String username = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +29,7 @@ class Login extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 SizedBox(
-                  height: 250,
+                  height: 150,
                 ),
                 Padding(
                   padding: EdgeInsets.all(20),
@@ -49,14 +61,14 @@ class Login extends StatelessWidget {
                         child: Column(
                           children: <Widget>[
                             SizedBox(
-                              height: 50,
+                              height: 0,
                             ),
                             Container(
                               child: Column(
                                 children: <Widget>[
                                   Container(
                                     margin: EdgeInsets.only(
-                                        left: 50.0, right: 50.0),
+                                        left: 10.0, right: 10.0),
                                     child: Material(
                                       shadowColor: Colors.black,
                                       elevation: 10.0,
@@ -64,10 +76,56 @@ class Login extends StatelessWidget {
                                       child: Align(
                                         alignment: Alignment.bottomLeft,
                                         child: Container(
-                                          padding: EdgeInsets.only(left: 25.0),
+                                          padding: EdgeInsets.only(left: 5.0),
                                           child: TextField(
                                             autocorrect: false,
                                             enableSuggestions: false,
+                                            onChanged: (val) {
+                                              setState(() {
+                                                email = val;
+                                              });
+                                            },
+                                            decoration: InputDecoration(
+                                              border: OutlineInputBorder(
+                                                  borderSide: BorderSide.none),
+                                              hintText: 'Email',
+                                              suffixIcon: Padding(
+                                                padding:
+                                                    const EdgeInsetsDirectional
+                                                        .only(end: 0.0),
+                                                child: Icon(
+                                                  Icons.mail_outline_rounded,
+                                                  color: Colors.lightBlue,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 15,
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.only(
+                                        left: 10.0, right: 10.0),
+                                    child: Material(
+                                      shadowColor: Colors.black,
+                                      elevation: 10.0,
+                                      borderRadius: BorderRadius.circular(30.0),
+                                      child: Align(
+                                        alignment: Alignment.bottomLeft,
+                                        child: Container(
+                                          padding: EdgeInsets.only(left: 5.0),
+                                          child: TextField(
+                                            autocorrect: false,
+                                            enableSuggestions: false,
+                                            onChanged: (val) {
+                                              setState(() {
+                                                username = val;
+                                              });
+                                            },
                                             decoration: InputDecoration(
                                               border: OutlineInputBorder(
                                                   borderSide: BorderSide.none),
@@ -75,7 +133,7 @@ class Login extends StatelessWidget {
                                               suffixIcon: Padding(
                                                 padding:
                                                     const EdgeInsetsDirectional
-                                                        .only(end: 12.0),
+                                                        .only(end: 0.0),
                                                 child: Icon(
                                                   Icons.account_circle_outlined,
                                                   color: Colors.lightBlue,
@@ -92,16 +150,21 @@ class Login extends StatelessWidget {
                                   ),
                                   Container(
                                     margin: EdgeInsets.only(
-                                        bottom: 10.0, left: 50.0, right: 50.0),
+                                        bottom: 0, left: 10.0, right: 10.0),
                                     child: Material(
                                       shadowColor: Colors.black,
                                       elevation: 10.0,
                                       borderRadius: BorderRadius.circular(30.0),
                                       child: Container(
-                                        padding: EdgeInsets.only(left: 25.0),
+                                        padding: EdgeInsets.only(left: 5.0),
                                         child: TextField(
                                           obscureText: true,
                                           autocorrect: false,
+                                          onChanged: (val) {
+                                            setState(() {
+                                                password = val;
+                                              });
+                                          },
                                           decoration: InputDecoration(
                                             border: OutlineInputBorder(
                                                 borderSide: BorderSide.none),
@@ -109,7 +172,7 @@ class Login extends StatelessWidget {
                                             suffixIcon: Padding(
                                               padding:
                                                   const EdgeInsetsDirectional
-                                                      .only(end: 12.0),
+                                                      .only(end: 5.0),
                                               child: Icon(
                                                 Icons.lock_outline_rounded,
                                                 color: Colors.lightGreen,
@@ -187,7 +250,7 @@ class Login extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text("Don't have an account ?      "),
-                                HrefText(text: "SIGN UP", widget: SignUp()),
+                                HrefText(text: "SIGN UP", widget: SignIn()),
                               ],
                             ),
                           ],

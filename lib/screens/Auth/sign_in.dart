@@ -11,6 +11,10 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   final AuthService _auth = AuthService();
 
+  String email = '';
+  String password = '';
+  String username = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,6 +74,11 @@ class _SignInState extends State<SignIn> {
                                           child: TextField(
                                             autocorrect: false,
                                             enableSuggestions: false,
+                                            onChanged: (val) {
+                                              setState(() {
+                                                email = val;
+                                              });
+                                            },
                                             decoration: InputDecoration(
                                               border: OutlineInputBorder(
                                                   borderSide: BorderSide.none),
@@ -106,6 +115,11 @@ class _SignInState extends State<SignIn> {
                                           child: TextField(
                                             autocorrect: false,
                                             enableSuggestions: false,
+                                            onChanged: (val) {
+                                              setState(() {
+                                                username = val;
+                                              });
+                                            },
                                             decoration: InputDecoration(
                                               border: OutlineInputBorder(
                                                   borderSide: BorderSide.none),
@@ -140,6 +154,11 @@ class _SignInState extends State<SignIn> {
                                         child: TextField(
                                           obscureText: true,
                                           autocorrect: false,
+                                          onChanged: (val) {
+                                            setState(() {
+                                                password = val;
+                                              });
+                                          },
                                           decoration: InputDecoration(
                                             border: OutlineInputBorder(
                                                 borderSide: BorderSide.none),
