@@ -7,12 +7,14 @@ import 'signup.dart';
 import '../decoration_shapes.dart';
 import '../../globals.dart';
 
-class Login extends StatefulWidget {
+class LogIn extends StatefulWidget {
+  final Function toogleView;
+  LogIn({this.toogleView});
   @override
-  _LoginState createState() => _LoginState();
+  _LogInState createState() => _LogInState();
 }
 
-class _LoginState extends State<Login> {
+class _LogInState extends State<LogIn> {
   final AuthService _auth = AuthService();
 
   String email = '';
@@ -57,7 +59,7 @@ class _LoginState extends State<Login> {
                   child: Container(
                     child: SingleChildScrollView(
                       child: Padding(
-                        padding: EdgeInsets.all(20),
+                        padding: EdgeInsets.all(10),
                         child: Column(
                           children: <Widget>[
                             SizedBox(
@@ -162,8 +164,8 @@ class _LoginState extends State<Login> {
                                           autocorrect: false,
                                           onChanged: (val) {
                                             setState(() {
-                                                password = val;
-                                              });
+                                              password = val;
+                                            });
                                           },
                                           decoration: InputDecoration(
                                             border: OutlineInputBorder(
@@ -249,8 +251,14 @@ class _LoginState extends State<Login> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text("Don't have an account ?      "),
-                                HrefText(text: "SIGN UP", widget: SignIn()),
+                                Text("Don't have an account ? "),
+                                FlatButton.icon(
+                                    onPressed: () {
+                                      widget.toogleView();
+                                    },
+                                    icon: Icon(Icons.person),
+                                    label: Text('Sign in'))
+                                //HrefText(text: "SIGN UP", widget: SignIn()),
                               ],
                             ),
                           ],

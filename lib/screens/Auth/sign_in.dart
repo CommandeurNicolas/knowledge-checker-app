@@ -4,6 +4,8 @@ import 'package:knowledge_checker/screens/decoration_shapes.dart';
 import 'package:knowledge_checker/services/auth.dart';
 
 class SignIn extends StatefulWidget {
+  final Function toogleView;
+  SignIn({this.toogleView});
   @override
   _SignInState createState() => _SignInState();
 }
@@ -236,6 +238,22 @@ class _SignInState extends State<SignIn> {
                                   ),
                                 ),
                               ),
+                            ),
+                            SizedBox(
+                              height: 70,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text("Already have an account ? "),
+                                FlatButton.icon(
+                                    onPressed: () {
+                                      widget.toogleView();
+                                    },
+                                    icon: Icon(Icons.person),
+                                    label: Text('Log in'))
+                                //HrefText(text: "SIGN UP", widget: SignIn()),
+                              ],
                             ),
                           ],
                         ),
