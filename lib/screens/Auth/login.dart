@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:knowledge_checker/screens/Auth/sign_in.dart';
+import 'package:knowledge_checker/screens/Auth/signup.dart';
 import 'package:knowledge_checker/services/auth.dart';
 import 'package:knowledge_checker/view_model/href_text.dart';
 
@@ -31,11 +32,12 @@ class _LogInState extends State<LogIn> {
         width: double.infinity,
         child: Stack(
           children: [
+            DecorationShapes(),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 SizedBox(
-                  height: 150,
+                  height: 250,
                 ),
                 Padding(
                   padding: EdgeInsets.all(20),
@@ -63,20 +65,20 @@ class _LogInState extends State<LogIn> {
                   child: Container(
                     child: SingleChildScrollView(
                       child: Padding(
-                        padding: EdgeInsets.all(10),
+                        padding: EdgeInsets.all(20),
                         child: Form(
                           key: _formKey,
                           child: Column(
                             children: <Widget>[
                               SizedBox(
-                                height: 0,
+                                height: 50,
                               ),
                               Container(
                                 child: Column(
                                   children: <Widget>[
                                     Container(
                                       margin: EdgeInsets.only(
-                                          left: 10.0, right: 10.0),
+                                          left: 50.0, right: 50.0),
                                       child: Material(
                                         shadowColor: Colors.black,
                                         elevation: 10.0,
@@ -85,53 +87,8 @@ class _LogInState extends State<LogIn> {
                                         child: Align(
                                           alignment: Alignment.bottomLeft,
                                           child: Container(
-                                            padding: EdgeInsets.only(left: 5.0),
-                                            child: TextFormField(
-                                              autocorrect: false,
-                                              enableSuggestions: false,
-                                              validator: (val) => val.isEmpty
-                                                  ? 'Enter an email'
-                                                  : null,
-                                              onChanged: (val) {
-                                                setState(() {
-                                                  email = val;
-                                                });
-                                              },
-                                              decoration: InputDecoration(
-                                                border: OutlineInputBorder(
-                                                    borderSide:
-                                                        BorderSide.none),
-                                                hintText: 'Email',
-                                                suffixIcon: Padding(
-                                                  padding:
-                                                      const EdgeInsetsDirectional
-                                                          .only(end: 0.0),
-                                                  child: Icon(
-                                                    Icons.mail_outline_rounded,
-                                                    color: Colors.lightBlue,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 15,
-                                    ),
-                                    Container(
-                                      margin: EdgeInsets.only(
-                                          left: 10.0, right: 10.0),
-                                      child: Material(
-                                        shadowColor: Colors.black,
-                                        elevation: 10.0,
-                                        borderRadius:
-                                            BorderRadius.circular(30.0),
-                                        child: Align(
-                                          alignment: Alignment.bottomLeft,
-                                          child: Container(
-                                            padding: EdgeInsets.only(left: 5.0),
+                                            padding:
+                                                EdgeInsets.only(left: 25.0),
                                             child: TextFormField(
                                               autocorrect: false,
                                               enableSuggestions: false,
@@ -151,7 +108,7 @@ class _LogInState extends State<LogIn> {
                                                 suffixIcon: Padding(
                                                   padding:
                                                       const EdgeInsetsDirectional
-                                                          .only(end: 0.0),
+                                                          .only(end: 12.0),
                                                   child: Icon(
                                                     Icons
                                                         .account_circle_outlined,
@@ -169,14 +126,16 @@ class _LogInState extends State<LogIn> {
                                     ),
                                     Container(
                                       margin: EdgeInsets.only(
-                                          bottom: 0, left: 10.0, right: 10.0),
+                                          bottom: 10.0,
+                                          left: 50.0,
+                                          right: 50.0),
                                       child: Material(
                                         shadowColor: Colors.black,
                                         elevation: 10.0,
                                         borderRadius:
                                             BorderRadius.circular(30.0),
                                         child: Container(
-                                          padding: EdgeInsets.only(left: 5.0),
+                                          padding: EdgeInsets.only(left: 25.0),
                                           child: TextFormField(
                                             obscureText: true,
                                             autocorrect: false,
@@ -195,7 +154,7 @@ class _LogInState extends State<LogIn> {
                                               suffixIcon: Padding(
                                                 padding:
                                                     const EdgeInsetsDirectional
-                                                        .only(end: 5.0),
+                                                        .only(end: 12.0),
                                                 child: Icon(
                                                   Icons.lock_outline_rounded,
                                                   color: Colors.lightGreen,
@@ -246,7 +205,7 @@ class _LogInState extends State<LogIn> {
                                     child: Ink(
                                       decoration: BoxDecoration(
                                         gradient: LinearGradient(
-                                          colors: [darkblue, Color(0xff4AC496)],
+                                          colors: [darkblue, mygreen],
                                           begin: Alignment.centerLeft,
                                           end: Alignment.centerRight,
                                         ),
@@ -286,13 +245,13 @@ class _LogInState extends State<LogIn> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text("Don't have an account ? "),
-                                  FlatButton.icon(
-                                      onPressed: () {
-                                        widget.toogleView();
-                                      },
-                                      icon: Icon(Icons.person),
-                                      label: Text('Sign in'))
-                                  //HrefText(text: "SIGN UP", widget: SignIn()),
+                                  // FlatButton.icon(
+                                  //     onPressed: () {
+                                  //       widget.toogleView();
+                                  //     },
+                                  //     icon: Icon(Icons.person),
+                                  //     label: Text('Sign in'))
+                                  HrefText(text: "SIGN UP", widget: SignUp()),
                                 ],
                               ),
                             ],
@@ -304,7 +263,6 @@ class _LogInState extends State<LogIn> {
                 ),
               ],
             ),
-            DecorationShapes()
           ],
         ),
       ),
