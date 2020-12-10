@@ -2,7 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:knowledge_checker/screens/auth/sign_up.dart';
 import 'package:knowledge_checker/services/auth.dart';
-import 'package:knowledge_checker/view_model/href_text.dart';
+import 'package:knowledge_checker/shared/view_model/href_text.dart';
 import 'package:knowledge_checker/shared/decoration_shapes.dart';
 import 'package:knowledge_checker/shared/globals.dart';
 

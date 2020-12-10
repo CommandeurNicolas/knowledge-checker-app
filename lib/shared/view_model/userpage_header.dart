@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:knowledge_checker/screens/Auth/login.dart';
+import 'package:knowledge_checker/screens/auth/log_in.dart';
 
 class UserPageHeader extends StatefulWidget {
   final String image;

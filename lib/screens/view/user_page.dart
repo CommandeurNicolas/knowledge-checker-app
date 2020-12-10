@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:knowledge_checker/view_model/userpage_header.dart';
+import 'package:knowledge_checker/shared/view_model/userpage_header.dart';
 
 class UserPage extends StatelessWidget {
   @override
