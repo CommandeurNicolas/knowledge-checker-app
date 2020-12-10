@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:knowledge_checker/models/user.dart';
 import 'package:knowledge_checker/screens/wrapper.dart';
 import 'package:knowledge_checker/services/auth.dart';
-import 'screens/Auth/login.dart';
-import 'screens/Auth/signup.dart';
+import 'screens/auth/log_in.dart';
+import 'screens/auth/sign_up.dart';
 import 'package:provider/provider.dart';
 void main() {
   runApp(MyApp());
