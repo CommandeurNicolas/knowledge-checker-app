@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:knowledge_checker/shared/globals.dart';
 import 'package:knowledge_checker/shared/decoration_shapes.dart';
 import 'package:knowledge_checker/services/auth.dart';
+import 'package:knowledge_checker/view_model/href_text.dart';
+
+import 'log_in.dart';
 
 class SignUp extends StatefulWidget {
   final Function toogleView;
@@ -31,7 +34,7 @@ class _SignUpState extends State<SignUp> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 SizedBox(
-                  height: 150,
+                  height: 250,
                 ),
                 Padding(
                   padding: EdgeInsets.all(20),
@@ -60,15 +63,22 @@ class _SignUpState extends State<SignUp> {
                             key: _formKey,
                             child: Column(
                               children: <Widget>[
-                                SizedBox(
-                                  height: 0,
-                                ),
+                                // TODO : revoir
+                                // Container(
+                                //   color: Colors.amber,
+                                //   child: SizedBox(
+                                //     height: 50,
+                                //     width: 50,
+                                //   ),
+                                // ),
                                 Container(
                                   child: Column(
                                     children: <Widget>[
                                       Container(
                                         margin: EdgeInsets.only(
-                                            left: 10.0, right: 10.0),
+                                            left: 30.0,
+                                            right:
+                                                30.0), // TODO : revoir la margin
                                         child: Material(
                                           shadowColor: Colors.black,
                                           elevation: 10.0,
@@ -78,7 +88,7 @@ class _SignUpState extends State<SignUp> {
                                             alignment: Alignment.bottomLeft,
                                             child: Container(
                                               padding:
-                                                  EdgeInsets.only(left: 5.0),
+                                                  EdgeInsets.only(left: 15.0),
                                               child: TextFormField(
                                                 validator: (val) => val.isEmpty
                                                     ? 'Enter an email'
@@ -98,11 +108,11 @@ class _SignUpState extends State<SignUp> {
                                                   suffixIcon: Padding(
                                                     padding:
                                                         const EdgeInsetsDirectional
-                                                            .only(end: 0.0),
+                                                            .only(end: 12.0),
                                                     child: Icon(
                                                       Icons
                                                           .mail_outline_rounded,
-                                                      color: Colors.lightBlue,
+                                                      color: Colors.red,
                                                     ),
                                                   ),
                                                 ),
@@ -235,10 +245,7 @@ class _SignUpState extends State<SignUp> {
                                           gradient: LinearGradient(
                                               begin: Alignment.centerLeft,
                                               end: Alignment.centerRight,
-                                              colors: [
-                                                darkblue,
-                                                Color(0xff4AC496)
-                                              ]),
+                                              colors: [darkblue, mygreen]),
                                           borderRadius:
                                               BorderRadius.circular(30.0),
                                         ),
@@ -275,13 +282,14 @@ class _SignUpState extends State<SignUp> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text("Already have an account ? "),
-                                    FlatButton.icon(
-                                        onPressed: () {
-                                          widget.toogleView();
-                                        },
-                                        icon: Icon(Icons.person),
-                                        label: Text('Log in'))
-                                    //HrefText(text: "SIGN UP", widget: SignUp()),
+                                    // FlatButton.icon(
+                                    //   onPressed: () {
+                                    //     widget.toogleView();
+                                    //   },
+                                    //   icon: Icon(Icons.person),
+                                    //   label: Text('Log in'),
+                                    // ),
+                                    HrefText(text: "Log in", widget: LogIn()),
                                   ],
                                 ),
                               ],
