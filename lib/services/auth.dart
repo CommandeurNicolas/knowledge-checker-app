@@ -8,10 +8,9 @@ class AuthService {
   /// Create `User` obj based on [FirebaseUser]
 
   User _userFromFireBaseUser(FirebaseUser user) {
-    return user != null ? User(uid: user.uid) : null;
+    return user != null ? User(uid:user.uid) : null;
   }
 
-  ///
   /// auth change user stream
   Stream<User> get user {
     return _auth.onAuthStateChanged
@@ -33,6 +32,7 @@ class AuthService {
 // sign in with email & pass
   Future login(String email, String password, String username) async {
     try {
+      var temp = await DatabaseService().getEmailByUsername(username);
       AuthResult result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
       FirebaseUser user = result.user;
@@ -44,12 +44,11 @@ class AuthService {
   }
 
 // register
-  Future register(String email, String password, String username) async {
+  Future register(String email, String password, String username, String classe, bool isTeacher) async {
     try {
-      AuthResult result = await _auth.createUserWithEmailAndPassword(
-          email: email, password: password);
+      AuthResult result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
       FirebaseUser user = result.user;
-      await DatabaseService(uidUser: user.uid).registerUserData(email,username,password,'yolo',false);
+      var data =await DatabaseService(uidUser: user.uid).registerUserData(email,username,password,classe,isTeacher);
       return _userFromFireBaseUser(user);
     } catch (e) {
       print(e.toString());
