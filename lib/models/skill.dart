@@ -2,11 +2,13 @@ class Skill {
   int id;
   String titre;
   String desc;
+  bool validated;
 
-  Skill(int id, String titre, String desc) {
+  Skill(int id, String titre, String desc, bool validated) {
     this.id = id;
     this.titre = titre;
     this.desc = desc;
+    this.validated = validated;
   }
 
   int getId() {
@@ -19,5 +21,13 @@ class Skill {
 
   String getDesc() {
     return this.desc;
+  }
+
+  bool isValidated() {
+    return validated;
+  }
+
+  void setValidated(bool isvalid) {
+    this.validated = isvalid;
   }
 }

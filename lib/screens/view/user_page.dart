@@ -7,62 +7,62 @@ import 'package:knowledge_checker/shared/view_model/userpage_header.dart';
 class UserPage extends StatelessWidget {
   final List<Section> sections = [
     new Section("Java", "assets/images/java.png", [
-      new Skill(1, "titre skill 1", "desc skill 1"),
-      new Skill(2, "titre skill 2", "desc skill 2"),
-      new Skill(3, "titre skill 3", "desc skill 3")
+      new Skill(1, "titre skill 1", "desc skill 1", false),
+      new Skill(2, "titre skill 2", "desc skill 2", false),
+      new Skill(3, "titre skill 3", "desc skill 3", false)
     ]),
     new Section("C", "assets/images/java.png", [
-      new Skill(1, "titre skill 1", "desc skill 1"),
-      new Skill(2, "titre skill 2", "desc skill 2"),
-      new Skill(3, "titre skill 3", "desc skill 3")
+      new Skill(1, "titre skill 1", "desc skill 1", false),
+      new Skill(2, "titre skill 2", "desc skill 2", false),
+      new Skill(3, "titre skill 3", "desc skill 3", false)
     ]),
     new Section("C++", "assets/images/c++.png", [
-      new Skill(1, "titre skill 1", "desc skill 1"),
-      new Skill(2, "titre skill 2", "desc skill 2"),
-      new Skill(3, "titre skill 3", "desc skill 3"),
-      new Skill(1, "titre skill 1", "desc skill 1"),
-      new Skill(2, "titre skill 2", "desc skill 2"),
-      new Skill(3, "titre skill 3", "desc skill 3"),
-      new Skill(1, "titre skill 1", "desc skill 1"),
-      new Skill(2, "titre skill 2", "desc skill 2"),
-      new Skill(3, "titre skill 3", "desc skill 3"),
-      new Skill(1, "titre skill 1", "desc skill 1"),
-      new Skill(2, "titre skill 2", "desc skill 2"),
-      new Skill(3, "titre skill 3", "desc skill 3"),
-      new Skill(1, "titre skill 1", "desc skill 1"),
-      new Skill(2, "titre skill 2", "desc skill 2"),
-      new Skill(3, "titre skill 3", "desc skill 3"),
-      new Skill(1, "titre skill 1", "desc skill 1"),
-      new Skill(2, "titre skill 2", "desc skill 2"),
-      new Skill(3, "titre skill 3", "desc skill 3"),
+      new Skill(1, "titre skill 1", "desc skill 1", false),
+      new Skill(2, "titre skill 2", "desc skill 2", false),
+      new Skill(3, "titre skill 3", "desc skill 3", false),
+      new Skill(1, "titre skill 1", "desc skill 1", false),
+      new Skill(2, "titre skill 2", "desc skill 2", false),
+      new Skill(3, "titre skill 3", "desc skill 3", false),
+      new Skill(1, "titre skill 1", "desc skill 1", false),
+      new Skill(2, "titre skill 2", "desc skill 2", false),
+      new Skill(3, "titre skill 3", "desc skill 3", false),
+      new Skill(1, "titre skill 1", "desc skill 1", false),
+      new Skill(2, "titre skill 2", "desc skill 2", false),
+      new Skill(3, "titre skill 3", "desc skill 3", false),
+      new Skill(1, "titre skill 1", "desc skill 1", false),
+      new Skill(2, "titre skill 2", "desc skill 2", false),
+      new Skill(3, "titre skill 3", "desc skill 3", false),
+      new Skill(1, "titre skill 1", "desc skill 1", false),
+      new Skill(2, "titre skill 2", "desc skill 2", false),
+      new Skill(3, "titre skill 3", "desc skill 3", false),
     ]),
     new Section("Lisp", "assets/images/poop.png", [
-      new Skill(1, "titre skill 1", "desc skill 1"),
-      new Skill(2, "titre skill 2", "desc skill 2"),
-      new Skill(3, "titre skill 3", "desc skill 3")
+      new Skill(1, "titre skill 1", "desc skill 1", false),
+      new Skill(2, "titre skill 2", "desc skill 2", false),
+      new Skill(3, "titre skill 3", "desc skill 3", false)
     ]),
     new Section("Python", "assets/images/python.png", [
-      new Skill(1, "titre skill 1", "desc skill 1"),
-      new Skill(2, "titre skill 2", "desc skill 2"),
-      new Skill(3, "titre skill 3", "desc skill 3")
+      new Skill(1, "titre skill 1", "desc skill 1", false),
+      new Skill(2, "titre skill 2", "desc skill 2", false),
+      new Skill(3, "titre skill 3", "desc skill 3", false)
     ]),
     new Section("C#", "assets/images/c#.jpg", [
-      new Skill(1, "titre skill 1", "desc skill 1"),
-      new Skill(2, "titre skill 2", "desc skill 2"),
-      new Skill(3, "titre skill 3", "desc skill 3")
+      new Skill(1, "titre skill 1", "desc skill 1", false),
+      new Skill(2, "titre skill 2", "desc skill 2", false),
+      new Skill(3, "titre skill 3", "desc skill 3", false)
     ])
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFf0f0f0),
       body: _scrollView(context),
     );
   }
 
   Widget _scrollView(BuildContext context) {
     return Container(
-      color: Color(0xFFf0f0f0),
       child: CustomScrollView(
         slivers: <Widget>[
           SliverPersistentHeader(

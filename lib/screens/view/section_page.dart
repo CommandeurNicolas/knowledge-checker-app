@@ -117,8 +117,13 @@ class SectionPage extends StatelessWidget {
 
   void tapped(BuildContext context, int i) {
     Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => SkillPage(skill: section.getSkills()[i])));
+      context,
+      MaterialPageRoute(
+        builder: (context) => SkillPage(
+          skill: section.getSkills()[i],
+          section: section,
+        ),
+      ),
+    );
   }
 }
