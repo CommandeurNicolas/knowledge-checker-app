@@ -278,6 +278,7 @@ class DatabaseService {
         .document(skillTitle)
         .updateData({"selfValidated": true});
   }
+
   Future validateSkill(
       String uidUser, String sectionTitle, String skillTitle) async {
     await userCollection

@@ -307,8 +307,9 @@ class FormSignUpState extends State<FormSignUp> {
                                               border: OutlineInputBorder(
                                                   borderSide: BorderSide.none),
                                             ),
-                                            items: listClass.map<DropdownMenuItem<String>>(
-                                                (String value) {
+                                            items: listClass
+                                                .map<DropdownMenuItem<String>>(
+                                                    (String value) {
                                               return DropdownMenuItem<String>(
                                                 value: value,
                                                 child: Text(value),
@@ -329,7 +330,11 @@ class FormSignUpState extends State<FormSignUp> {
                                 child: Container(
                                   child: RaisedButton(
                                     onPressed: () async {
-                                      if (_formKey.currentState.validate() && (await DatabaseService().getEmailByUsername(username)==null)) {
+                                      if (_formKey.currentState.validate() &&
+                                          (await DatabaseService()
+                                                  .getEmailByUsername(
+                                                      username) ==
+                                              null)) {
                                         dynamic result = await _auth.register(
                                             email,
                                             password,

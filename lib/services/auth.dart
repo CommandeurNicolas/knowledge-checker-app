@@ -33,11 +33,10 @@ class AuthService {
   Future login(String username, String password) async {
     try {
       var email = await DatabaseService().getEmailByUsername(username);
-        AuthResult result = await _auth.signInWithEmailAndPassword(
-            email: email, password: password);
-        FirebaseUser user = result.user;
-        return _userFromFireBaseUser(user);
-      
+      AuthResult result = await _auth.signInWithEmailAndPassword(
+          email: email, password: password);
+      FirebaseUser user = result.user;
+      return _userFromFireBaseUser(user);
     } catch (e) {
       print(e.toString());
       return null;
@@ -48,12 +47,12 @@ class AuthService {
   Future register(String email, String password, String username, String classe,
       bool isTeacher) async {
     try {
-        AuthResult result = await _auth.createUserWithEmailAndPassword(
-            email: email, password: password);
-        FirebaseUser user = result.user;
-        var data = await DatabaseService(uidUser: user.uid)
-            .registerUserData(email, username, password, classe, isTeacher);
-        return _userFromFireBaseUser(user);
+      AuthResult result = await _auth.createUserWithEmailAndPassword(
+          email: email, password: password);
+      FirebaseUser user = result.user;
+      var data = await DatabaseService(uidUser: user.uid)
+          .registerUserData(email, username, password, classe, isTeacher);
+      return _userFromFireBaseUser(user);
     } catch (e) {
       print(e.toString());
       return null;
