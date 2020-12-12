@@ -4,8 +4,7 @@ import 'package:knowledge_checker/services/auth.dart';
 
 class UserPageHeader extends SliverPersistentHeaderDelegate {
   final String image;
-  final String prenom;
-  final String nom;
+  final String username;
   final String filiere;
   final double minExtent;
   final double maxExtent;
@@ -14,8 +13,7 @@ class UserPageHeader extends SliverPersistentHeaderDelegate {
   UserPageHeader(
       {Key key,
       this.image,
-      this.prenom,
-      this.nom,
+      this.username,
       this.filiere,
       this.minExtent,
       @required this.maxExtent});
@@ -68,7 +66,7 @@ class UserPageHeader extends SliverPersistentHeaderDelegate {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "$prenom $nom",
+                          "$username",
                           style: TextStyle(color: Colors.white, fontSize: 20),
                         ),
                         Text(

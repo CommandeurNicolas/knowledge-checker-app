@@ -3,7 +3,6 @@ import 'package:knowledge_checker/models/section.dart';
 import 'package:knowledge_checker/models/skill.dart';
 import 'package:knowledge_checker/screens/view/section_page.dart';
 import 'package:knowledge_checker/models/user.dart';
-import 'package:knowledge_checker/screens/view/language_page.dart';
 import 'package:knowledge_checker/services/database.dart';
 import 'package:knowledge_checker/shared/view_model/userpage_header.dart';
 import 'package:provider/provider.dart';
@@ -33,19 +32,38 @@ class _UserPageState extends State<UserPage> {
               child: Text("\nHang On, We are building your app !"),
             );
           } else {
-            var data = snapshot.data.data['sections'];
-            var sections;
-            for (var section in data) {
-              sections.add();
+            var data = snapshot.data;
+            Map userData = {
+              "username":data.data['username'],
+              "class":data.data['class'],
+            };
+
+            List<Section> sections = [];
+            //print(data.data);
+            //
+            //print(data.data['sections']);
+
+            for (var section in data.data['sections']) {
+              print(section);
+              List<Skill> skills = [];
+              for (var skill in section['skills']) {
+                print(skill);
+                skills.add(new Skill(1, skill['title'], skill['description']));
+              }
+              sections.add(new Section(
+                  section['title'], 'assets/images/c++.png', skills));
             }
-            return _scrollView(context, sections);
+            print("YOLOOOO");
+            print(sections[0].getTitre());
+            return _scrollView(context, userData, sections);
           }
         },
       ),
     );
   }
 
-  Widget _scrollView(BuildContext context, var sections) {
+  Widget _scrollView(
+      BuildContext context, Map userData, List<Section> sections) {
     return Container(
       child: CustomScrollView(
         slivers: <Widget>[
@@ -53,9 +71,8 @@ class _UserPageState extends State<UserPage> {
             pinned: true,
             floating: false,
             delegate: UserPageHeader(
-              nom: "Commandeur",
-              prenom: "Nicolas",
-              filiere: "M1 INFO",
+              username: userData['username'],
+              filiere:userData['class'],
               image: "assets/images/user.png",
               minExtent: 115.0,
               maxExtent: 320.0,
@@ -101,7 +118,7 @@ class _UserPageState extends State<UserPage> {
     );
   }
 
-  void tapped(BuildContext context, int i, var sections) {
+  void tapped(BuildContext context, int i, List<Section> sections) {
     Navigator.push(
         context,
         MaterialPageRoute(
