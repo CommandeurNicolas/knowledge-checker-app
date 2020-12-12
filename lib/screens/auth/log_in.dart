@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:knowledge_checker/screens/auth/sign_up.dart';
 import 'package:knowledge_checker/services/auth.dart';
+import 'package:knowledge_checker/services/database.dart';
 import 'package:knowledge_checker/shared/view_model/href_text.dart';
 import 'package:knowledge_checker/shared/decoration_shapes.dart';
 import 'package:knowledge_checker/shared/globals.dart';
@@ -184,9 +185,9 @@ class _LogInState extends State<LogIn> {
                                   margin: EdgeInsets.only(right: 60.0),
                                   child: RaisedButton(
                                     onPressed: () async {
-                                      if (_formKey.currentState.validate()) {
+                                      if (_formKey.currentState.validate() && (await DatabaseService().getEmailByUsername(username)!=null)) {
                                         dynamic result = await _auth.login(
-                                            username, password, username);
+                                            username,password);
                                         if (result == null) {
                                           setState(() {
                                             error = 'Error';

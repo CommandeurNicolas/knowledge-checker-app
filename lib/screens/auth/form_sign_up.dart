@@ -329,7 +329,7 @@ class FormSignUpState extends State<FormSignUp> {
                                 child: Container(
                                   child: RaisedButton(
                                     onPressed: () async {
-                                      if (_formKey.currentState.validate()) {
+                                      if (_formKey.currentState.validate() && (await DatabaseService().getEmailByUsername(username)==null)) {
                                         dynamic result = await _auth.register(
                                             email,
                                             password,

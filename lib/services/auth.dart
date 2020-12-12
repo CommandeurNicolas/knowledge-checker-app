@@ -8,7 +8,7 @@ class AuthService {
   /// Create `User` obj based on [FirebaseUser]
 
   User _userFromFireBaseUser(FirebaseUser user) {
-    return user != null ? User(uid:user.uid) : null;
+    return user != null ? User(uid: user.uid) : null;
   }
 
   /// auth change user stream
@@ -30,13 +30,14 @@ class AuthService {
   }
 
 // sign in with email & pass
-  Future login(String email, String password, String username) async {
+  Future login(String username, String password) async {
     try {
-      var temp = await DatabaseService().getEmailByUsername(username);
-      AuthResult result = await _auth.signInWithEmailAndPassword(
-          email: email, password: password);
-      FirebaseUser user = result.user;
-      return _userFromFireBaseUser(user);
+      var email = await DatabaseService().getEmailByUsername(username);
+        AuthResult result = await _auth.signInWithEmailAndPassword(
+            email: email, password: password);
+        FirebaseUser user = result.user;
+        return _userFromFireBaseUser(user);
+      
     } catch (e) {
       print(e.toString());
       return null;
@@ -44,12 +45,15 @@ class AuthService {
   }
 
 // register
-  Future register(String email, String password, String username, String classe, bool isTeacher) async {
+  Future register(String email, String password, String username, String classe,
+      bool isTeacher) async {
     try {
-      AuthResult result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
-      FirebaseUser user = result.user;
-      var data =await DatabaseService(uidUser: user.uid).registerUserData(email,username,password,classe,isTeacher);
-      return _userFromFireBaseUser(user);
+        AuthResult result = await _auth.createUserWithEmailAndPassword(
+            email: email, password: password);
+        FirebaseUser user = result.user;
+        var data = await DatabaseService(uidUser: user.uid)
+            .registerUserData(email, username, password, classe, isTeacher);
+        return _userFromFireBaseUser(user);
     } catch (e) {
       print(e.toString());
       return null;

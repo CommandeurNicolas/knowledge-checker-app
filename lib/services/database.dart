@@ -19,7 +19,7 @@ class DatabaseService {
         .getDocuments();
     var documents = documentData.documents;
 
-    return documents[0].data;
+    return documents[0].data['sections'];
   }
 
   /// Function that will create in the appropriate record in documents `teachers` or `users`.
@@ -35,6 +35,7 @@ class DatabaseService {
     if (!isTeacher) {
       var sections = await getSectionsClasses(classe);
       return await userCollection.document(uidUser).setData({
+        'uid': uidUser,
         'email': email,
         'username': username,
         'password': password,
@@ -57,7 +58,7 @@ class DatabaseService {
     return classCollection.snapshots();
   }
 
-  /// 
+  ///
   Future getEmailByUsername(String username) async {
     QuerySnapshot documentData = await teacherCollection
         .where("username", isEqualTo: username)
@@ -68,10 +69,12 @@ class DatabaseService {
           .getDocuments();
     }
 
-    
-
     return documentData.documents.isEmpty
         ? null
         : documentData.documents[0].data['email'];
+  }
+
+  Future getUserSections() async {
+    var section = userCollection.document(this.uidUser).get();
   }
 }
