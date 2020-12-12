@@ -48,7 +48,7 @@ class _UserPageState extends State<UserPage> {
               List<Skill> skills = [];
               for (var skill in section['skills']) {
                 print(skill);
-                skills.add(new Skill(1, skill['title'], skill['description']));
+                skills.add(new Skill(1, skill['title'], skill['description'],skill['validated']));
               }
               sections.add(new Section(
                   section['title'], 'assets/images/c++.png', skills));
