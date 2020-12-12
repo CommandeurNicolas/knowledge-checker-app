@@ -42,4 +42,7 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>
+<array>
+    <string>UIInterfaceOrientationPortrait</string>
+</array>
 </plist>

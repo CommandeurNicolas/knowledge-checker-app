@@ -1,28 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:knowledge_checker/screens/auth/log_in.dart';
+import 'package:flutter/rendering.dart';
+import 'package:knowledge_checker/services/auth.dart';
 
-class UserPageHeader extends StatefulWidget {
+class UserPageHeader extends SliverPersistentHeaderDelegate {
   final String image;
   final String prenom;
   final String nom;
   final String filiere;
-  final double offset;
-  const UserPageHeader(
-      {Key key, this.image, this.prenom, this.nom, this.filiere, this.offset})
-      : super(key: key);
+  final double minExtent;
+  final double maxExtent;
+  final AuthService _auth = AuthService();
+
+  UserPageHeader(
+      {Key key,
+      this.image,
+      this.prenom,
+      this.nom,
+      this.filiere,
+      this.minExtent,
+      @required this.maxExtent});
 
   @override
-  _MyHeaderState createState() => _MyHeaderState();
-}
-
-class _MyHeaderState extends State<UserPageHeader> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
     return ClipPath(
       clipper: MyClipper(),
       child: Container(
-        padding: EdgeInsets.only(left: 40, top: 50, right: 20),
-        height: 350,
+        padding: EdgeInsets.only(left: 20, top: 50, right: 20),
+        height: maxExtent,
         width: double.infinity,
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -33,49 +38,45 @@ class _MyHeaderState extends State<UserPageHeader> {
               Color(0xFF11249F),
             ],
           ),
-          image: DecorationImage(
-            image: AssetImage("assets/images/virus.png"),
-          ),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
             GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return LogIn();
-                    },
-                  ),
-                );
+              onTap: () async {
+                await _auth.signOut();
               },
-              child: Icon(Icons.logout),
+              child: Icon(Icons.logout, color: Colors.white),
             ),
             SizedBox(height: 20),
             Expanded(
               child: Stack(
                 children: <Widget>[
                   Positioned(
-                    top: (widget.offset < 0) ? 0 : widget.offset,
+                    top: 0,
                     child: Image.asset(
-                      widget.image,
-                      width: 230,
+                      image,
+                      width: 120,
                       fit: BoxFit.fitWidth,
                       alignment: Alignment.topCenter,
                     ),
                   ),
                   Positioned(
-                    top: 20 - widget.offset / 2,
-                    left: 150,
+                    top: 20,
+                    left: 140,
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "${widget.prenom} ${widget.nom}",
+                          "$prenom $nom",
+                          style: TextStyle(color: Colors.white, fontSize: 20),
                         ),
                         Text(
-                          "${widget.filiere}",
+                          "$filiere",
+                          style: TextStyle(color: Colors.white, fontSize: 16),
+                        ),
+                        SizedBox(
+                          height: 40,
                         ),
                         UserProgression(),
                       ],
@@ -90,6 +91,14 @@ class _MyHeaderState extends State<UserPageHeader> {
       ),
     );
   }
+
+  @override
+  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
+    return true;
+  }
+
+  @override
+  FloatingHeaderSnapConfiguration get snapConfiguration => null;
 }
 
 class MyClipper extends CustomClipper<Path> {
@@ -113,6 +122,9 @@ class MyClipper extends CustomClipper<Path> {
 class UserProgression extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Text("pas fait encore");
+    return Text(
+      "pas fait encore",
+      style: TextStyle(color: Colors.white),
+    );
   }
 }

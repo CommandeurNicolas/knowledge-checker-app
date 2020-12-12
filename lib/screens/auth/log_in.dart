@@ -6,7 +6,6 @@ import 'package:knowledge_checker/shared/view_model/href_text.dart';
 import 'package:knowledge_checker/shared/decoration_shapes.dart';
 import 'package:knowledge_checker/shared/globals.dart';
 
-
 class LogIn extends StatefulWidget {
   final Function toogleView;
   LogIn({this.toogleView});
@@ -187,7 +186,7 @@ class _LogInState extends State<LogIn> {
                                     onPressed: () async {
                                       if (_formKey.currentState.validate()) {
                                         dynamic result = await _auth.login(
-                                            email, password, username);
+                                            username, password, username);
                                         if (result == null) {
                                           setState(() {
                                             error = 'Error';
