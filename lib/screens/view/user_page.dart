@@ -1,19 +1,56 @@
 import 'package:flutter/material.dart';
+import 'package:knowledge_checker/models/section.dart';
 import 'package:knowledge_checker/models/skill.dart';
-import 'package:knowledge_checker/screens/view/language_page.dart';
+import 'package:knowledge_checker/screens/view/section_page.dart';
 import 'package:knowledge_checker/shared/view_model/userpage_header.dart';
 
 class UserPage extends StatelessWidget {
-  final List<Skill> sections = [
-    new Skill(0, "Java", "java is an object oriented programming language",
-        "assets/images/java.png"),
-    new Skill(1, "C", "low level language", "assets/images/java.png"),
-    new Skill(2, "C++", "low level language object oriented",
-        "assets/images/c++.png"),
-    new Skill(
-        3, "Lisp", "shit language, don't touch it", "assets/images/poop.png"),
-    new Skill(4, "Python", "easy language", "assets/images/python.png"),
-    new Skill(5, "C#", "object oriented language", "assets/images/c#.jpg"),
+  final List<Section> sections = [
+    new Section("Java", "assets/images/java.png", [
+      new Skill(1, "titre skill 1", "desc skill 1"),
+      new Skill(2, "titre skill 2", "desc skill 2"),
+      new Skill(3, "titre skill 3", "desc skill 3")
+    ]),
+    new Section("C", "assets/images/java.png", [
+      new Skill(1, "titre skill 1", "desc skill 1"),
+      new Skill(2, "titre skill 2", "desc skill 2"),
+      new Skill(3, "titre skill 3", "desc skill 3")
+    ]),
+    new Section("C++", "assets/images/c++.png", [
+      new Skill(1, "titre skill 1", "desc skill 1"),
+      new Skill(2, "titre skill 2", "desc skill 2"),
+      new Skill(3, "titre skill 3", "desc skill 3"),
+      new Skill(1, "titre skill 1", "desc skill 1"),
+      new Skill(2, "titre skill 2", "desc skill 2"),
+      new Skill(3, "titre skill 3", "desc skill 3"),
+      new Skill(1, "titre skill 1", "desc skill 1"),
+      new Skill(2, "titre skill 2", "desc skill 2"),
+      new Skill(3, "titre skill 3", "desc skill 3"),
+      new Skill(1, "titre skill 1", "desc skill 1"),
+      new Skill(2, "titre skill 2", "desc skill 2"),
+      new Skill(3, "titre skill 3", "desc skill 3"),
+      new Skill(1, "titre skill 1", "desc skill 1"),
+      new Skill(2, "titre skill 2", "desc skill 2"),
+      new Skill(3, "titre skill 3", "desc skill 3"),
+      new Skill(1, "titre skill 1", "desc skill 1"),
+      new Skill(2, "titre skill 2", "desc skill 2"),
+      new Skill(3, "titre skill 3", "desc skill 3"),
+    ]),
+    new Section("Lisp", "assets/images/poop.png", [
+      new Skill(1, "titre skill 1", "desc skill 1"),
+      new Skill(2, "titre skill 2", "desc skill 2"),
+      new Skill(3, "titre skill 3", "desc skill 3")
+    ]),
+    new Section("Python", "assets/images/python.png", [
+      new Skill(1, "titre skill 1", "desc skill 1"),
+      new Skill(2, "titre skill 2", "desc skill 2"),
+      new Skill(3, "titre skill 3", "desc skill 3")
+    ]),
+    new Section("C#", "assets/images/c#.jpg", [
+      new Skill(1, "titre skill 1", "desc skill 1"),
+      new Skill(2, "titre skill 2", "desc skill 2"),
+      new Skill(3, "titre skill 3", "desc skill 3")
+    ])
   ];
 
   @override
@@ -60,7 +97,7 @@ class UserPage extends StatelessWidget {
                         child: Column(
                           children: [
                             Image.asset(
-                              sections[index].image,
+                              sections[index].getImage(),
                               height: 170,
                               fit: BoxFit.fitHeight,
                             ),
@@ -84,6 +121,6 @@ class UserPage extends StatelessWidget {
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => LanguagePage(section: sections[i])));
+            builder: (context) => SectionPage(section: sections[i])));
   }
 }

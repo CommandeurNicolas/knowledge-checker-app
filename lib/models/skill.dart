@@ -2,14 +2,15 @@ class Skill {
   int id;
   String titre;
   String desc;
-  String image;
 
-  // TODO enlever image --> test pour faire passer la class skill en section (list de skill)
-  Skill(int id, String titre, String desc, String image) {
+  Skill(int id, String titre, String desc) {
     this.id = id;
     this.titre = titre;
     this.desc = desc;
-    this.image = image;
+  }
+
+  int getId() {
+    return this.id;
   }
 
   String getTitre() {
@@ -18,13 +19,5 @@ class Skill {
 
   String getDesc() {
     return this.desc;
-  }
-
-  int getId() {
-    return this.id;
-  }
-
-  String getImage() {
-    return this.image;
   }
 }

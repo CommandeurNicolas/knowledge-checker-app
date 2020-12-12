@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:knowledge_checker/shared/globals.dart';
 
-class LanguagePageHeader extends SliverPersistentHeaderDelegate {
+class SectionPageHeader extends SliverPersistentHeaderDelegate {
   final String image;
   final String titre;
   final double minExtent;
   final double maxExtent;
 
-  LanguagePageHeader(
+  SectionPageHeader(
       {Key key,
       this.image,
       this.titre,

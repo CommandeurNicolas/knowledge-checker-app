@@ -100,6 +100,8 @@ class _SignUpState extends State<SignUp> {
                                                   email = val;
                                                 });
                                               },
+                                              keyboardType:
+                                                  TextInputType.emailAddress,
                                               decoration: InputDecoration(
                                                 border: OutlineInputBorder(
                                                     borderSide:
