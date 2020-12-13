@@ -22,39 +22,52 @@ class _UserPageState extends State<UserPage> {
       body: StreamBuilder(
         stream: DatabaseService().userCollection.document(user.uid).snapshots(),
         builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            Center(
-              child: Text("\nCaught an error in the firebase thingie... :| "),
-            );
-          }
-          if (!snapshot.hasData) {
-            return Center(
-              child: Text("\nHang On, We are building your app !"),
-            );
-          } else {
-            var data = snapshot.data;
-            Map userData = {
-              "username":data.data['username'],
-              "class":data.data['class'],
-            };
+          return StreamBuilder(
+              stream: DatabaseService()
+                  .userCollection
+                  .document(user.uid)
+                  .collection("section")
+                  .snapshots(),
+              builder: (context, snapshot2) {
+                if (snapshot.hasError && snapshot2.hasError) {
+                  Center(
+                    child: Text(
+                        "\nCaught an error in the firebase thingie... :| "),
+                  );
+                }
+                if (!snapshot.hasData && ! snapshot2.hasData) {
+                  return Center(
+                    child: Text("\nHang On, We are building your app !"),
+                  );
+                } else {
+                  var data = snapshot.data;
+                  Map userData = {
+                    "username": data.data['username'],
+                    "class": data.data['class'],
+                  };
+                  // DatabaseService()
+                  //   .insertNewSection(userData['class'], "c#", "Apprendre","Instancier une variable","Declarer une variable x");
+                  //DatabaseService().insertNewSkill(userData['class'], "c#","Loop", "Do a loop");
+                  // List<Section> sections = [];
+                  print(data.data);
+                  // //
+                  // //print(data.data['sections']);
 
-            List<Section> sections = [];
-            //print(data.data);
-            //
-            //print(data.data['sections']);
-
-            for (var section in data.data['sections']) {
-              print(section);
-              List<Skill> skills = [];
-              for (var skill in section['skills']) {
-                print(skill);
-                skills.add(new Skill(1, skill['title'], skill['description'],skill['validated']));
-              }
-              sections.add(new Section(
-                  section['title'], 'assets/images/c++.png', skills));
-            }
-            return _scrollView(context, userData, sections);
-          }
+                  // for (var section in data.data['sections']) {
+                  //   print(section);
+                  //   List<Skill> skills = [];
+                  //   for (var skill in section['skills']) {
+                  //     print(skill);
+                  //     skills.add(new Skill(1, skill['title'], skill['description'],
+                  //         skill['validated']));
+                  //   }
+                  //   sections.add(new Section(
+                  //       section['title'], 'assets/images/c++.png', skills));
+                  // }
+                  // return _scrollView(context, userData, sections);
+                  return Text("yolo");
+                }
+          });
         },
       ),
     );
@@ -70,7 +83,7 @@ class _UserPageState extends State<UserPage> {
             floating: false,
             delegate: UserPageHeader(
               username: userData['username'],
-              filiere:userData['class'],
+              filiere: userData['class'],
               image: "assets/images/user.png",
               minExtent: 115.0,
               maxExtent: 320.0,
