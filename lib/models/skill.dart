@@ -1,14 +1,18 @@
+import 'package:knowledge_checker/models/skill_state.dart';
+
 class Skill {
   int id;
   String titre;
   String desc;
   bool validated;
+  bool autovalidated;
 
-  Skill(int id, String titre, String desc, bool validated) {
+  Skill(int id, String titre, String desc, bool validated, bool autovalidated) {
     this.id = id;
     this.titre = titre;
     this.desc = desc;
     this.validated = validated;
+    this.autovalidated = autovalidated;
   }
 
   int getId() {
@@ -29,5 +33,13 @@ class Skill {
 
   void setValidated(bool isvalid) {
     this.validated = isvalid;
+  }
+
+  bool isAutoValidated() {
+    return autovalidated;
+  }
+
+  void setAutoValidated(bool isvalid) {
+    this.autovalidated = isvalid;
   }
 }

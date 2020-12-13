@@ -4,52 +4,52 @@ import 'package:knowledge_checker/models/skill.dart';
 import 'package:knowledge_checker/screens/view/section_page.dart';
 import 'package:knowledge_checker/shared/view_model/userpage_header.dart';
 
-class UserPage extends StatelessWidget {
+class StudentPage extends StatelessWidget {
   final List<Section> sections = [
     new Section("Java", "assets/images/java.png", [
-      new Skill(1, "titre skill 1", "desc skill 1", false),
-      new Skill(2, "titre skill 2", "desc skill 2", false),
-      new Skill(3, "titre skill 3", "desc skill 3", false)
+      new Skill(1, "titre skill 1", "desc skill 1", false, false),
+      new Skill(2, "titre skill 2", "desc skill 2", false, false),
+      new Skill(3, "titre skill 3", "desc skill 3", false, false)
     ]),
     new Section("C", "assets/images/java.png", [
-      new Skill(1, "titre skill 1", "desc skill 1", false),
-      new Skill(2, "titre skill 2", "desc skill 2", false),
-      new Skill(3, "titre skill 3", "desc skill 3", false)
+      new Skill(1, "titre skill 1", "desc skill 1", false, false),
+      new Skill(2, "titre skill 2", "desc skill 2", false, false),
+      new Skill(3, "titre skill 3", "desc skill 3", false, false)
     ]),
     new Section("C++", "assets/images/c++.png", [
-      new Skill(1, "titre skill 1", "desc skill 1", false),
-      new Skill(2, "titre skill 2", "desc skill 2", false),
-      new Skill(3, "titre skill 3", "desc skill 3", false),
-      new Skill(1, "titre skill 1", "desc skill 1", false),
-      new Skill(2, "titre skill 2", "desc skill 2", false),
-      new Skill(3, "titre skill 3", "desc skill 3", false),
-      new Skill(1, "titre skill 1", "desc skill 1", false),
-      new Skill(2, "titre skill 2", "desc skill 2", false),
-      new Skill(3, "titre skill 3", "desc skill 3", false),
-      new Skill(1, "titre skill 1", "desc skill 1", false),
-      new Skill(2, "titre skill 2", "desc skill 2", false),
-      new Skill(3, "titre skill 3", "desc skill 3", false),
-      new Skill(1, "titre skill 1", "desc skill 1", false),
-      new Skill(2, "titre skill 2", "desc skill 2", false),
-      new Skill(3, "titre skill 3", "desc skill 3", false),
-      new Skill(1, "titre skill 1", "desc skill 1", false),
-      new Skill(2, "titre skill 2", "desc skill 2", false),
-      new Skill(3, "titre skill 3", "desc skill 3", false),
+      new Skill(1, "titre skill 1", "desc skill 1", false, false),
+      new Skill(2, "titre skill 2", "desc skill 2", false, false),
+      new Skill(3, "titre skill 3", "desc skill 3", false, false),
+      new Skill(1, "titre skill 1", "desc skill 1", false, false),
+      new Skill(2, "titre skill 2", "desc skill 2", false, false),
+      new Skill(3, "titre skill 3", "desc skill 3", false, false),
+      new Skill(1, "titre skill 1", "desc skill 1", false, false),
+      new Skill(2, "titre skill 2", "desc skill 2", false, false),
+      new Skill(3, "titre skill 3", "desc skill 3", false, false),
+      new Skill(1, "titre skill 1", "desc skill 1", false, false),
+      new Skill(2, "titre skill 2", "desc skill 2", false, false),
+      new Skill(3, "titre skill 3", "desc skill 3", false, false),
+      new Skill(1, "titre skill 1", "desc skill 1", false, false),
+      new Skill(2, "titre skill 2", "desc skill 2", false, false),
+      new Skill(3, "titre skill 3", "desc skill 3", false, false),
+      new Skill(1, "titre skill 1", "desc skill 1", false, false),
+      new Skill(2, "titre skill 2", "desc skill 2", false, false),
+      new Skill(3, "titre skill 3", "desc skill 3", false, false),
     ]),
     new Section("Lisp", "assets/images/poop.png", [
-      new Skill(1, "titre skill 1", "desc skill 1", false),
-      new Skill(2, "titre skill 2", "desc skill 2", false),
-      new Skill(3, "titre skill 3", "desc skill 3", false)
+      new Skill(1, "titre skill 1", "desc skill 1", false, false),
+      new Skill(2, "titre skill 2", "desc skill 2", false, false),
+      new Skill(3, "titre skill 3", "desc skill 3", false, false)
     ]),
     new Section("Python", "assets/images/python.png", [
-      new Skill(1, "titre skill 1", "desc skill 1", false),
-      new Skill(2, "titre skill 2", "desc skill 2", false),
-      new Skill(3, "titre skill 3", "desc skill 3", false)
+      new Skill(1, "titre skill 1", "desc skill 1", false, false),
+      new Skill(2, "titre skill 2", "desc skill 2", false, false),
+      new Skill(3, "titre skill 3", "desc skill 3", false, false)
     ]),
     new Section("C#", "assets/images/c#.jpg", [
-      new Skill(1, "titre skill 1", "desc skill 1", false),
-      new Skill(2, "titre skill 2", "desc skill 2", false),
-      new Skill(3, "titre skill 3", "desc skill 3", false)
+      new Skill(1, "titre skill 1", "desc skill 1", false, false),
+      new Skill(2, "titre skill 2", "desc skill 2", false, false),
+      new Skill(3, "titre skill 3", "desc skill 3", false, false)
     ])
   ];
 

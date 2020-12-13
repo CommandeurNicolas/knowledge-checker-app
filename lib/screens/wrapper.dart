@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:knowledge_checker/models/user.dart';
 import 'package:knowledge_checker/screens/auth/authenticate.dart';
 import 'package:knowledge_checker/screens/view/section_page.dart';
-import 'package:knowledge_checker/screens/view/user_page.dart';
+import 'package:knowledge_checker/screens/view/student_page.dart';
+// import 'package:knowledge_checker/screens/view/teacher_page.dart';
 import 'package:knowledge_checker/shared/globals.dart';
 import 'package:provider/provider.dart';
 
@@ -19,6 +20,6 @@ class _WrapperState extends State<Wrapper> {
     final user = Provider.of<User>(context);
 
     /// return home or auth widget
-    return user == null ? Authenticate() : UserPage();
+    return user == null ? Authenticate() : StudentPage();
   }
 }

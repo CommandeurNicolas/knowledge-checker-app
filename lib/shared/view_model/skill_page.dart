@@ -40,7 +40,7 @@ class SkillPage extends StatelessWidget {
                 ),
               ),
               background: Image.asset(
-                "assets/images/skill_background_2.jpg",
+                "assets/images/skill_background_6.jpg",
                 fit: BoxFit.cover,
               ),
               collapseMode: CollapseMode.parallax,
