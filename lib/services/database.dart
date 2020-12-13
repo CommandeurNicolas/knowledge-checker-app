@@ -15,7 +15,7 @@ class DatabaseService {
 
   Future getSectionsClasses(String classe) async {
     QuerySnapshot documentData = await classCollection
-        .where("title", isEqualTo: "M1 INFO")
+        .where("title", isEqualTo: classe)
         .getDocuments();
     var documents = documentData.documents;
 
@@ -45,6 +45,7 @@ class DatabaseService {
     } else {
       var sections = await getSectionsClasses(classe);
       return await teacherCollection.document(uidUser).setData({
+        'uid': uidUser,
         'email': email,
         'username': username,
         'password': password,
@@ -74,7 +75,4 @@ class DatabaseService {
         : documentData.documents[0].data['email'];
   }
 
-  Future getUserSections() async {
-    var section = userCollection.document(this.uidUser).get();
-  }
 }

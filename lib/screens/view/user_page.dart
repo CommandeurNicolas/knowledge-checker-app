@@ -53,8 +53,6 @@ class _UserPageState extends State<UserPage> {
               sections.add(new Section(
                   section['title'], 'assets/images/c++.png', skills));
             }
-            print("YOLOOOO");
-            print(sections[0].getTitre());
             return _scrollView(context, userData, sections);
           }
         },
