@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:knowledge_checker/models/section.dart';
 import 'package:knowledge_checker/models/skill.dart';
 import 'package:knowledge_checker/screens/view/section_page.dart';
+import 'package:knowledge_checker/shared/globals.dart';
 import 'package:knowledge_checker/shared/view_model/userpage_header.dart';
 
 class StudentPage extends StatelessWidget {
@@ -56,7 +57,7 @@ class StudentPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFf0f0f0),
+      backgroundColor: backgroundColor,
       body: _scrollView(context),
     );
   }

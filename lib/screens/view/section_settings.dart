@@ -66,7 +66,7 @@ class _SectionSettingsState extends State<SectionSettings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFf0f0f0),
+      backgroundColor: backgroundColor,
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
@@ -138,55 +138,6 @@ class _SectionSettingsState extends State<SectionSettings> {
           SliverToBoxAdapter(
             child: SizedBox(
               height: 5.0,
-            ),
-          ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) => GestureDetector(
-                onTap: () => isSettings == true
-                    ? settingsTapped(context, index)
-                    : deleteTapped(context, index),
-                child: Padding(
-                  padding:
-                      EdgeInsets.symmetric(vertical: 5.0, horizontal: 20.0),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Container(
-                      height: 90,
-                      color: Colors.white,
-                      child: Row(
-                        children: <Widget>[
-                          Container(
-                            // color: mygreen,
-                            width: 90,
-                            height: 90,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Image.asset(
-                                sections[index].getImage(),
-                              ),
-                            ),
-                          ),
-                          SizedBox(width: 10),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  sections[index].getTitre(),
-                                ),
-                                Text("data")
-                              ],
-                            ),
-                          ),
-                          _switchButton(),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              childCount: sections.length,
             ),
           ),
           SliverList(

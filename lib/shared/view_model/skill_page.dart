@@ -22,7 +22,7 @@ class SkillPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFf0f0f0),
+      backgroundColor: backgroundColor,
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
@@ -48,7 +48,7 @@ class SkillPage extends StatelessWidget {
                 ),
               ),
               background: Image.asset(
-                "assets/images/skill_background_6.jpg",
+                "assets/images/skill_background_1.jpg",
                 fit: BoxFit.cover,
               ),
               collapseMode: CollapseMode.parallax,

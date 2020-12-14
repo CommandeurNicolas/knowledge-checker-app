@@ -15,18 +15,29 @@ class AddSection extends StatelessWidget {
         child: Column(
           children: [
             Padding(
-              padding:
-                  const EdgeInsets.only(left: 18.0, right: 18.0, bottom: 18.0),
-              child: TextField(
-                decoration: InputDecoration(hintText: "Section's title"),
+              padding: const EdgeInsets.all(18.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(10.0),
+                    topRight: Radius.circular(10.0),
+                  ),
+                  color: backgroundColor,
+                ),
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: "Section's title",
+                    contentPadding:
+                        const EdgeInsets.only(left: 8.0, right: 8.0),
+                  ),
+                ),
               ),
             ),
             SizedBox(
               height: 20.0,
             ),
             Padding(
-              padding:
-                  const EdgeInsets.only(left: 18.0, right: 18.0, bottom: 18.0),
+              padding: const EdgeInsets.symmetric(horizontal: 18.0),
               child: Material(
                 // color: Colors.amber,
                 elevation: 5.0,

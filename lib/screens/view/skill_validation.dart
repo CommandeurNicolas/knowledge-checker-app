@@ -66,10 +66,10 @@ class _SkillValidationState extends State<SkillValidation> {
   Widget build(BuildContext context) {
     // print(sections[0].getSkills()[0].getTitre());
     return Scaffold(
-      backgroundColor: Color(0xFFf0f0f0),
+      backgroundColor: backgroundColor,
       appBar: AppBar(
         title: Text("Validation de compétences"),
-        backgroundColor: myblue,
+        backgroundColor: darkblue,
       ),
       body: CustomScrollView(
         slivers: [
