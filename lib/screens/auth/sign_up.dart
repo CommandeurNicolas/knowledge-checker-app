@@ -34,7 +34,7 @@ class _SignUpState extends State<SignUp> {
               child: IconButton(
                 icon: new Icon(Icons.arrow_back_rounded),
                 iconSize: 35,
-                color: darkblue,
+                color: myblue,
                 onPressed: () {
                   Navigator.pop(context);
                 },
@@ -55,7 +55,7 @@ class _SignUpState extends State<SignUp> {
                       children: <Widget>[
                         Text(
                           "Welcome!",
-                          style: TextStyle(color: darkblue, fontSize: 40),
+                          style: TextStyle(color: myblue, fontSize: 40),
                         ),
                         SizedBox(
                           height: 28,
@@ -348,7 +348,7 @@ class _SignUpState extends State<SignUp> {
                                         gradient: LinearGradient(
                                             begin: Alignment.centerLeft,
                                             end: Alignment.centerRight,
-                                            colors: [darkblue, mygreen]),
+                                            colors: [myblue, mygreen]),
                                         borderRadius:
                                             BorderRadius.circular(30.0),
                                       ),

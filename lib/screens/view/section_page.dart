@@ -18,13 +18,13 @@ class SectionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFf0f0f0),
       body: _scrollView(context),
     );
   }
 
   Widget _scrollView(BuildContext context) {
     return Container(
-      color: Color(0xFFf0f0f0),
       child: CustomScrollView(
         slivers: <Widget>[
           SliverPersistentHeader(
@@ -98,8 +98,7 @@ class SectionPage extends StatelessWidget {
                                   Text(section.getSkills()[index].getTitre())),
                           Padding(
                             padding: const EdgeInsets.only(right: 8.0),
-                            child:
-                                Icon(Icons.arrow_forward_ios, color: darkblue),
+                            child: Icon(Icons.arrow_forward_ios, color: myblue),
                           ),
                         ],
                       ),
@@ -122,6 +121,7 @@ class SectionPage extends StatelessWidget {
         builder: (context) => SkillPage(
           skill: section.getSkills()[i],
           section: section,
+          validation: false,
         ),
       ),
     );

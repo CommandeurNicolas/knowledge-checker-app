@@ -62,7 +62,7 @@ class UserPageHeader extends SliverPersistentHeaderDelegate {
                     ),
                   ),
                   Positioned(
-                    top: 20,
+                    top: 40,
                     left: 140,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -75,10 +75,6 @@ class UserPageHeader extends SliverPersistentHeaderDelegate {
                           "$filiere",
                           style: TextStyle(color: Colors.white, fontSize: 16),
                         ),
-                        SizedBox(
-                          height: 40,
-                        ),
-                        UserProgression(),
                       ],
                     ),
                   ),
@@ -116,15 +112,5 @@ class MyClipper extends CustomClipper<Path> {
   @override
   bool shouldReclip(CustomClipper<Path> oldClipper) {
     return false;
-  }
-}
-
-class UserProgression extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      "pas fait encore",
-      style: TextStyle(color: Colors.white),
-    );
   }
 }

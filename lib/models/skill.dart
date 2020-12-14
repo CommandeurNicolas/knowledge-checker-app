@@ -1,5 +1,3 @@
-import 'package:knowledge_checker/models/skill_state.dart';
-
 class Skill {
   int id;
   String titre;

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:knowledge_checker/shared/globals.dart';
 
 class DecorationShapes extends StatelessWidget {
   @override
@@ -14,9 +15,6 @@ class DecorationShapes extends StatelessWidget {
 }
 
 class ShapesPainter extends CustomPainter {
-  Color darkblue = Color(0xff4A69FF);
-  Color mygreen = Color(0xff4AC496);
-
   double pi = 3.1415;
   List positionBlueCircle = [152.0 * 2, 650.0 * 2];
   List positionGreenCircle = [290.0 * 2, 213.0 * 2];
@@ -27,7 +25,7 @@ class ShapesPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     Paint blueCircle = new Paint()
-      ..color = darkblue
+      ..color = myblue
       ..strokeCap = StrokeCap.round
       ..style = PaintingStyle.stroke
       ..strokeWidth = 7.0;
@@ -39,7 +37,7 @@ class ShapesPainter extends CustomPainter {
       ..strokeWidth = 5.0;
 
     Paint bluePlus = new Paint()
-      ..color = darkblue
+      ..color = myblue
       ..strokeCap = StrokeCap.round
       ..style = PaintingStyle.stroke
       ..strokeWidth = 5.0;

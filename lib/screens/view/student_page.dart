@@ -98,10 +98,16 @@ class StudentPage extends StatelessWidget {
                           children: [
                             Image.asset(
                               sections[index].getImage(),
-                              height: 170,
+                              height: 170, // TODO : a revoir
                               fit: BoxFit.fitHeight,
                             ),
-                            Center(child: Text(sections[index].titre)),
+                            Padding(
+                              padding: const EdgeInsets.all(4.0),
+                              child: Text(
+                                sections[index].titre,
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
                           ],
                         ),
                       ),

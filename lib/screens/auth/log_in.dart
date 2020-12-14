@@ -45,14 +45,14 @@ class _LogInState extends State<LogIn> {
                       children: <Widget>[
                         Text(
                           "Hello !",
-                          style: TextStyle(color: darkblue, fontSize: 40),
+                          style: TextStyle(color: myblue, fontSize: 40),
                         ),
                         SizedBox(
                           height: 10,
                         ),
                         Text(
                           "Welcome",
-                          style: TextStyle(color: darkblue, fontSize: 18),
+                          style: TextStyle(color: myblue, fontSize: 18),
                         ),
                       ],
                     ),
@@ -202,7 +202,7 @@ class _LogInState extends State<LogIn> {
                                     child: Ink(
                                       decoration: BoxDecoration(
                                         gradient: LinearGradient(
-                                          colors: [darkblue, mygreen],
+                                          colors: [myblue, mygreen],
                                           begin: Alignment.centerLeft,
                                           end: Alignment.centerRight,
                                         ),
