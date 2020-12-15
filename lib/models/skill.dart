@@ -2,13 +2,15 @@ class Skill {
   int id;
   String titre;
   String desc;
+  bool selfValidated;
   bool validated;
   bool autovalidated;
 
-  Skill(int id, String titre, String desc, bool validated, bool autovalidated) {
+  Skill(int id, String titre, String desc, bool selfValidated, bool validated) {
     this.id = id;
     this.titre = titre;
     this.desc = desc;
+    this.selfValidated = selfValidated;
     this.validated = validated;
     this.autovalidated = autovalidated;
   }
@@ -33,11 +35,11 @@ class Skill {
     this.validated = isvalid;
   }
 
-  bool isAutoValidated() {
-    return autovalidated;
+  bool isSelfValidated() {
+    return selfValidated;
   }
 
-  void setAutoValidated(bool isvalid) {
-    this.autovalidated = isvalid;
+  void setSelfValidated(bool isvalid) {
+    this.selfValidated = isvalid;
   }
 }

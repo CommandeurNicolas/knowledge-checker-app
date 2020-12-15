@@ -3,12 +3,13 @@ import 'package:knowledge_checker/models/skill.dart';
 class Section {
   String titre;
   String image;
+  String desc;
   List<Skill> skills;
 
-  Section(String titre, String image, List<Skill> skills) {
+  Section(String titre, String desc, String image) {
     this.titre = titre;
     this.image = image;
-    this.skills = skills;
+    this.desc = desc;
   }
 
   String getTitre() {

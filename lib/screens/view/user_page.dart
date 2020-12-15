@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:knowledge_checker/models/section.dart';
 import 'package:knowledge_checker/models/skill.dart';
@@ -6,6 +7,7 @@ import 'package:knowledge_checker/models/user.dart';
 import 'package:knowledge_checker/services/database.dart';
 import 'package:knowledge_checker/shared/view_model/userpage_header.dart';
 import 'package:provider/provider.dart';
+import 'dart:async';
 
 class UserPage extends StatefulWidget {
   @override
@@ -26,7 +28,7 @@ class _UserPageState extends State<UserPage> {
               stream: DatabaseService()
                   .userCollection
                   .document(user.uid)
-                  .collection("section")
+                  .collection("sections")
                   .snapshots(),
               builder: (context, snapshot2) {
                 if (snapshot.hasError && snapshot2.hasError) {
@@ -35,7 +37,7 @@ class _UserPageState extends State<UserPage> {
                         "\nCaught an error in the firebase thingie... :| "),
                   );
                 }
-                if (!snapshot.hasData && ! snapshot2.hasData) {
+                if (!snapshot.hasData && !snapshot2.hasData) {
                   return Center(
                     child: Text("\nHang On, We are building your app !"),
                   );
@@ -48,26 +50,54 @@ class _UserPageState extends State<UserPage> {
                   // DatabaseService()
                   //   .insertNewSection(userData['class'], "c#", "Apprendre","Instancier une variable","Declarer une variable x");
                   //DatabaseService().insertNewSkill(userData['class'], "c#","Loop", "Do a loop");
-                  // List<Section> sections = [];
-                  print(data.data);
-                  // //
-                  // //print(data.data['sections']);
+                  //DatabaseService().selfValidateSkill(user.uid, "c#", "Loop");
+                  List<Section> listSection = [];
 
-                  // for (var section in data.data['sections']) {
-                  //   print(section);
-                  //   List<Skill> skills = [];
-                  //   for (var skill in section['skills']) {
-                  //     print(skill);
-                  //     skills.add(new Skill(1, skill['title'], skill['description'],
-                  //         skill['validated']));
-                  //   }
-                  //   sections.add(new Section(
-                  //       section['title'], 'assets/images/c++.png', skills));
-                  // }
-                  // return _scrollView(context, userData, sections);
-                  return Text("yolo");
+                  var docsSection = snapshot2.data.documents;
+                  for (var doc in docsSection) {
+                    print(doc.data);
+                    listSection.add(new Section(doc.data['title'],
+                        doc.data['description'], 'assets/images/c++.png'));
+                  }
+
+                  // snapshot2.data.documents.asMap().forEach((index, data) {
+                  //   var titleSection = data.data['title'];
+                  //   var test = DatabaseService()
+                  //       .userCollection
+                  //       .document(user.uid)
+                  //       .collection("sections")
+                  //       .document(titleSection)
+                  //       .collection("skills")
+                  //       .getDocuments()
+                  //       .then((dataDoc) {
+                  //     var documents = dataDoc.documents;
+                  //     Map<String, Object> listSkill = {};
+                  //     List<Skill> arraySkillList = [];
+                  //     for (var skilldoc in documents) {
+                  //       listSkill['title'] = skilldoc.data['title'];
+                  //       listSkill['description'] = skilldoc.data['description'];
+                  //       listSkill['selfValidated'] =
+                  //           skilldoc.data['selfValidated'];
+                  //       listSkill['validated'] = skilldoc.data['validated'];
+                  //       arraySkillList.add(new Skill(
+                  //           1,
+                  //           listSkill['title'],
+                  //           listSkill['description'],
+                  //           listSkill['selfValidated']));
+                  //     }
+                  //     Section sectemp = new Section(
+                  //         data.data['title'],
+                  //         data.data['description'],
+                  //         'assets/images/c++.png',
+                  //         arraySkillList);
+
+                  //     listSection.add(sectemp);
+                  //     print(listSection.length);
+                  //   });
+                  //   print(listSection);
+                  return _scrollView(context, userData, listSection);
                 }
-          });
+              });
         },
       ),
     );

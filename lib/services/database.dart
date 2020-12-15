@@ -84,14 +84,12 @@ class DatabaseService {
               .document(sectionKey)
               .collection("skills")
               .document(skill['title'])
-              .setData(
-                {
-                  "title":skill['title'],
-                  "description":skill['description'],
-                  "selfValidated":false,
-                  "validated":false,
-                }
-              );
+              .setData({
+            "title": skill['title'],
+            "description": skill['description'],
+            "selfValidated": false,
+            "validated": false,
+          });
         }
       }
     } else {
@@ -119,14 +117,12 @@ class DatabaseService {
               .document(sectionKey)
               .collection("skills")
               .document(skill['title'])
-              .setData(
-                {
-                  "title":skill['title'],
-                  "description":skill['description'],
-                  "selfValidated":false,
-                  "validated":false,
-                }
-              );
+              .setData({
+            "title": skill['title'],
+            "description": skill['description'],
+            "selfValidated": false,
+            "validated": false,
+          });
         }
       }
     }
@@ -151,16 +147,23 @@ class DatabaseService {
         : documentData.documents[0].data['email'];
   }
 
-  Future insertNewSection(
-      String classe, String title, String description, String skillTitle,String skillDescription) async {
+  Future insertNewSection(String classe, String title, String description,
+      String skillTitle, String skillDescription) async {
     ///AJOUT DANS LA CLASSE LA SECTION
-    await classCollection.document(classe).collection("sections").document(title).setData({
-        "title": title, "description": description      
-    });
+    await classCollection
+        .document(classe)
+        .collection("sections")
+        .document(title)
+        .setData({"title": title, "description": description});
+
     ///AJOUT DANS LA SECTION DE LA CLASSE LE 1er SKILLS
-    await classCollection.document(classe).collection("sections").document(title).collection("skills").document(skillTitle).setData({
-        "title": skillTitle, "description": skillDescription
-    });
+    await classCollection
+        .document(classe)
+        .collection("sections")
+        .document(title)
+        .collection("skills")
+        .document(skillTitle)
+        .setData({"title": skillTitle, "description": skillDescription});
 
     /// RECUPERATION UTILISATEUR DE LA LISTE
     List<String> listUidUser = [];
@@ -170,38 +173,59 @@ class DatabaseService {
       listUidUser.add(document.data['uid']);
     }
     for (var uid in listUidUser) {
-        ///AJOUT DANS LES UTILISATEURS DE LA SECTION
-      await userCollection.document(uid).collection("sections").document(title).setData(
-          {"title": title, "description": description}
-      );
-      await userCollection.document(uid).collection("sections").document(title).collection("skills").document(skillTitle).setData({
-        "title": skillTitle, "description": skillDescription,"selfValidated":false,"validated":false
-    });
+      ///AJOUT DANS LES UTILISATEURS DE LA SECTION
+      await userCollection
+          .document(uid)
+          .collection("sections")
+          .document(title)
+          .setData({"title": title, "description": description});
+      await userCollection
+          .document(uid)
+          .collection("sections")
+          .document(title)
+          .collection("skills")
+          .document(skillTitle)
+          .setData({
+        "title": skillTitle,
+        "description": skillDescription,
+        "selfValidated": false,
+        "validated": false
+      });
     }
 
     listUidUser = [];
-    documentData =
-        await teacherCollection.where("class", isEqualTo: classe).getDocuments();
+    documentData = await teacherCollection
+        .where("class", isEqualTo: classe)
+        .getDocuments();
     for (var document in documentData.documents) {
       listUidUser.add(document.data['uid']);
     }
     for (var uid in listUidUser) {
-        ///AJOUT DANS LES UTILISATEURS DE LA SECTION
-      await teacherCollection.document(uid).collection("sections").document(title).setData(
-          {"title": title, "description": description}
-      );
-      await teacherCollection.document(uid).collection("sections").document(title).collection("skills").document(skillTitle).setData({
-        "title": skillTitle, "description": skillDescription
-    });
+      ///AJOUT DANS LES UTILISATEURS DE LA SECTION
+      await teacherCollection
+          .document(uid)
+          .collection("sections")
+          .document(title)
+          .setData({"title": title, "description": description});
+      await teacherCollection
+          .document(uid)
+          .collection("sections")
+          .document(title)
+          .collection("skills")
+          .document(skillTitle)
+          .setData({"title": skillTitle, "description": skillDescription});
     }
   }
 
   Future insertNewSkill(String classe, String sectionTitle, String title,
       String description) async {
-
-    await classCollection.document(classe).collection("sections").document(sectionTitle).collection("skills").document(title).setData({
-        "title": title, "description": description
-    });
+    await classCollection
+        .document(classe)
+        .collection("sections")
+        .document(sectionTitle)
+        .collection("skills")
+        .document(title)
+        .setData({"title": title, "description": description});
 
     List<String> listUidUser = [];
     QuerySnapshot documentData =
@@ -210,23 +234,58 @@ class DatabaseService {
       listUidUser.add(document.data['uid']);
     }
     for (var uid in listUidUser) {
-        ///AJOUT DANS LES UTILISATEURS DE LA SECTION
-      await userCollection.document(uid).collection("sections").document(sectionTitle).collection("skills").document(title).setData({
-        "title": title, "description": description,"selfValidated":false,"validated":false
-    });
+      ///AJOUT DANS LES UTILISATEURS DE LA SECTION
+      await userCollection
+          .document(uid)
+          .collection("sections")
+          .document(sectionTitle)
+          .collection("skills")
+          .document(title)
+          .setData({
+        "title": title,
+        "description": description,
+        "selfValidated": false,
+        "validated": false
+      });
     }
 
     listUidUser = [];
-    documentData =
-        await teacherCollection.where("class", isEqualTo: classe).getDocuments();
+    documentData = await teacherCollection
+        .where("class", isEqualTo: classe)
+        .getDocuments();
     for (var document in documentData.documents) {
       listUidUser.add(document.data['uid']);
     }
     for (var uid in listUidUser) {
-        ///AJOUT DANS LES UTILISATEURS DE LA SECTION
-      await teacherCollection.document(uid).collection("sections").document(sectionTitle).collection("skills").document(title).setData({
-        "title": title, "description": description
-    });
+      ///AJOUT DANS LES UTILISATEURS DE LA SECTION
+      await teacherCollection
+          .document(uid)
+          .collection("sections")
+          .document(sectionTitle)
+          .collection("skills")
+          .document(title)
+          .setData({"title": title, "description": description});
     }
+  }
+
+  Future selfValidateSkill(
+      String uid, String sectionTitle, String skillTitle) async {
+    await userCollection
+        .document(uid)
+        .collection("sections")
+        .document(sectionTitle)
+        .collection("skills")
+        .document(skillTitle)
+        .updateData({"selfValidated": true});
+  }
+  Future validateSkill(
+      String uidUser, String sectionTitle, String skillTitle) async {
+    await userCollection
+        .document(uidUser)
+        .collection("sections")
+        .document(sectionTitle)
+        .collection("skills")
+        .document(skillTitle)
+        .updateData({"validated": true});
   }
 }
