@@ -52,6 +52,7 @@ class UserPageHeader extends SliverPersistentHeaderDelegate {
                 children: <Widget>[
                   Positioned(
                     top: 0,
+                    left: 40,
                     child: Image.asset(
                       image,
                       width: 120,
@@ -61,7 +62,7 @@ class UserPageHeader extends SliverPersistentHeaderDelegate {
                   ),
                   Positioned(
                     top: 40,
-                    left: 140,
+                    left: 180,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [

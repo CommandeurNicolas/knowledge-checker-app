@@ -1,5 +1,4 @@
 class Skill {
-  int id;
   String titre;
   String desc;
   bool selfValidated;
@@ -7,19 +6,14 @@ class Skill {
   bool autovalidated;
   String idOwner;
 
-  Skill(int id, String titre, String desc, bool selfValidated, bool validated,
+  Skill(String titre, String desc, bool selfValidated, bool validated,
       String idOwner) {
-    this.id = id;
     this.titre = titre;
     this.desc = desc;
     this.selfValidated = selfValidated;
     this.validated = validated;
     this.autovalidated = autovalidated;
     this.idOwner = idOwner;
-  }
-
-  int getId() {
-    return this.id;
   }
 
   String getTitre() {

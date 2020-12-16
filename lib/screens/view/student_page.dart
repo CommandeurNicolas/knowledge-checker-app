@@ -144,7 +144,11 @@ class _StudentPageState extends State<StudentPage> {
                               height: 170,
                               fit: BoxFit.fitHeight,
                             ),
-                            Center(child: Text(sections[index].titre)),
+                            Padding(
+                              padding: const EdgeInsets.all(4.0),
+                              child: Text(
+                                  sections[index].getTitre().toUpperCase()),
+                            ),
                           ],
                         ),
                       ),

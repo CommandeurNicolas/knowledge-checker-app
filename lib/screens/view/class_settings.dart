@@ -25,7 +25,7 @@ class ClassSettings extends StatelessWidget {
                 Container(
                   width: double.infinity,
                   child: FlexibleSpaceBar(
-                    title: Text("Sections settings"),
+                    title: Text("Class settings"),
                     centerTitle: true,
                     background: Image.asset(
                       "assets/images/skill_background_5.jpg",

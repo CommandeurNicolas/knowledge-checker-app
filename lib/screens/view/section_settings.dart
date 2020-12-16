@@ -124,11 +124,24 @@ class _SectionSettingsState extends State<SectionSettings> {
                           Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Text(
-                                  widget.sections[index].getTitre(),
+                                  widget.sections[index]
+                                      .getTitre()
+                                      .toUpperCase(),
                                 ),
-                                Text("data")
+                                Container(
+                                  width: 50.0,
+                                  height: 3.0,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(1.5),
+                                    color: Colors.lightBlue,
+                                  ),
+                                ),
+                                Text(
+                                  "Contient ${widget.sections[index].getSkills().length.toString()} skill${needS(widget.sections[index].getSkills().length)}",
+                                ),
                               ],
                             ),
                           ),
@@ -147,6 +160,13 @@ class _SectionSettingsState extends State<SectionSettings> {
     );
   }
 
+  String needS(int i) {
+    if (i == 1)
+      return "";
+    else
+      return "s";
+  }
+
   void settingsTapped(BuildContext context, int i) {
     Navigator.push(
       context,
@@ -160,12 +180,12 @@ class _SectionSettingsState extends State<SectionSettings> {
   }
 
   void deleteTapped(BuildContext context, int i) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => StudentPage(),
-      ),
-    );
+    // Navigator.push(
+    //   context,
+    //   MaterialPageRoute(
+    //     builder: (context) => (),
+    //   ),
+    // );
   }
 
   void addTapped(BuildContext context) {

@@ -76,7 +76,7 @@ class _TeacherPageState extends State<TeacherPage> {
                   sectionSkillMap[request['sectionTitle']] = [];
                 }
                 for (var request in waiting) {
-                  sectionSkillMap[request['sectionTitle']].add(new Skill(0,
+                  sectionSkillMap[request['sectionTitle']].add(new Skill(
                       request['skillTitle'], "", false, false, request['uid']));
                 }
                 List<Section> sectionListSend = [];
@@ -181,7 +181,7 @@ class _TeacherPageState extends State<TeacherPage> {
                               print(sectionKey);
                               List<Skill> skills = [];
                               for (var skill in temp[sectionKey]["skills"]) {
-                                skills.add(new Skill(0, skill['title'],
+                                skills.add(new Skill(skill['title'],
                                     skill['description'], false, false, ""));
                               }
                               sectionRes.add(new Section(sectionKey, " ",

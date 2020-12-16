@@ -6,6 +6,7 @@ import 'package:knowledge_checker/services/database.dart';
 import 'package:knowledge_checker/shared/globals.dart';
 
 class SkillPage extends StatelessWidget {
+  int index;
   Skill skill;
   Section section;
   bool validation;
@@ -14,6 +15,7 @@ class SkillPage extends StatelessWidget {
   String classe;
   SkillPage(
       {Key key,
+      @required this.index,
       @required this.skill,
       @required this.section,
       @required this.validation,
@@ -30,7 +32,7 @@ class SkillPage extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            backgroundColor: myblue,
+            backgroundColor: darkblue,
             collapsedHeight: 105.0,
             expandedHeight: 250.0,
             floating: false,
@@ -40,7 +42,7 @@ class SkillPage extends StatelessWidget {
                 text: TextSpan(
                   children: [
                     TextSpan(
-                      text: '#${skill.getId()}',
+                      text: "#${index.toString()}",
                       style: TextStyle(fontSize: 34),
                     ),
                     TextSpan(text: '\n\n'),

@@ -75,7 +75,8 @@ class _SkillValidationState extends State<SkillValidation> {
                                     context,
                                     widget.validationList[index].getSkills()[i],
                                     widget.validationList[index],
-                                    widget.classe),
+                                    widget.classe,
+                                    index),
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(
                                       vertical: 5.0, horizontal: 20.0),
@@ -92,7 +93,7 @@ class _SkillValidationState extends State<SkillValidation> {
                                             height: 50,
                                             child: Center(
                                                 child: Text(
-                                              "#${widget.validationList[index].getSkills()[i].getId()}",
+                                              "#${index + 1}",
                                               style: TextStyle(
                                                   fontSize: 20,
                                                   color: Colors.white),
@@ -134,14 +135,15 @@ class _SkillValidationState extends State<SkillValidation> {
     );
   }
 
-  void tapped(
-      BuildContext context, Skill skill, Section section, String classe) {
+  void tapped(BuildContext context, Skill skill, Section section, String classe,
+      int i) {
     final user = Provider.of<User>(context);
 
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => SkillPage(
+          index: i,
           skill: skill,
           section: section,
           validation: true,

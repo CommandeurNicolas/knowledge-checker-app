@@ -52,7 +52,7 @@ class SectionPageHeader extends SliverPersistentHeaderDelegate {
                     ),
                   ),
                   Positioned(
-                    top: 55,
+                    top: 50,
                     left: 300,
                     child: LanguageBadge(),
                   ),
@@ -131,32 +131,6 @@ class VerticalText extends StatelessWidget {
       ),
     );
   }
-  // @override
-  // Widget build(BuildContext context) {
-  //   return Material(
-  //     borderRadius: BorderRadius.only(
-  //       bottomLeft: Radius.circular(10.0),
-  //       bottomRight: Radius.circular(10.0),
-  //     ),
-  //     color: mygreen,
-  //     child: Container(
-  //       // color: Colors.amber,
-  //       // padding: EdgeInsets.only(top: 35.0),
-  //       width: 30,
-  //       height: 210,
-  //       child: RotatedBox(
-  //         quarterTurns: 3,
-  //         child: Center(
-  //           child: Text(
-  //             "INFO 701",
-  //             style: TextStyle(color: Colors.white, fontSize: 20),
-  //           ),
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
-
 }
 
 class LanguageBadge extends StatelessWidget {
@@ -164,22 +138,94 @@ class LanguageBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Image.asset(
-          "assets/images/gold.png",
-          height: 60,
-          width: 60,
+        ColorFiltered(
+          colorFilter: ColorFilter.matrix(<double>[
+            0.2126,
+            0.7152,
+            0.0722,
+            0,
+            0,
+            0.2126,
+            0.7152,
+            0.0722,
+            0,
+            0,
+            0.2126,
+            0.7152,
+            0.0722,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+          ]),
+          child: Image.asset(
+            "assets/images/gold.png",
+            height: 60,
+            width: 60,
+          ),
         ),
         SizedBox(height: 5),
-        Image.asset(
-          "assets/images/silver.png",
-          height: 60,
-          width: 60,
+        ColorFiltered(
+          colorFilter: ColorFilter.matrix(<double>[
+            0.2126,
+            0.7152,
+            0.0722,
+            0,
+            0,
+            0.2126,
+            0.7152,
+            0.0722,
+            0,
+            0,
+            0.2126,
+            0.7152,
+            0.0722,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+          ]),
+          child: Image.asset(
+            "assets/images/silver.png",
+            height: 60,
+            width: 60,
+          ),
         ),
         SizedBox(height: 5),
-        Image.asset(
-          "assets/images/bronze.png",
-          height: 60,
-          width: 60,
+        ColorFiltered(
+          colorFilter: ColorFilter.matrix(<double>[
+            0.2126,
+            0.7152,
+            0.0722,
+            0,
+            0,
+            0.2126,
+            0.7152,
+            0.0722,
+            0,
+            0,
+            0.2126,
+            0.7152,
+            0.0722,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+          ]),
+          child: Image.asset(
+            "assets/images/bronze.png",
+            height: 60,
+            width: 60,
+          ),
         ),
       ],
     );

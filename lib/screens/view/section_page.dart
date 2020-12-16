@@ -52,7 +52,6 @@ class SectionPage extends StatelessWidget {
             var dataSkills = snapshot.data;
             for (var skillDoc in dataSkills.documents) {
               skillList.add(new Skill(
-                  1,
                   skillDoc['title'],
                   skillDoc['description'],
                   skillDoc['selfValidated'],
@@ -80,7 +79,7 @@ class SectionPage extends StatelessWidget {
                       child: Column(
                         children: [
                           Text(
-                            "Theme progression",
+                            "Progression",
                             style: TextStyle(fontSize: 24.0),
                           ),
                           SizedBox(
@@ -125,7 +124,7 @@ class SectionPage extends StatelessWidget {
                                     height: 70,
                                     child: Center(
                                         child: Text(
-                                      "#${skillList[index].getId()}",
+                                      "#${index + 1}",
                                       style: TextStyle(
                                           fontSize: 24, color: Colors.white),
                                     )),
@@ -160,6 +159,7 @@ class SectionPage extends StatelessWidget {
       context,
       MaterialPageRoute(
         builder: (context) => SkillPage(
+            index: i + 1,
             skill: skillList[i],
             section: section,
             validation: false,

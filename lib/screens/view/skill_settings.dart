@@ -34,7 +34,7 @@ class _SkillSettingsState extends State<SkillSettings> {
                 Container(
                   width: double.infinity,
                   child: FlexibleSpaceBar(
-                    title: Text("Sections settings"),
+                    title: Text("Skill settings"),
                     centerTitle: true,
                     background: Image.asset(
                       "assets/images/skill_background_5.jpg",
@@ -115,7 +115,7 @@ class _SkillSettingsState extends State<SkillSettings> {
                             height: 70,
                             child: Center(
                                 child: Text(
-                              "#${widget.section.getSkills()[index].getId()}",
+                              "#${index + 1}",
                               style:
                                   TextStyle(fontSize: 24, color: Colors.white),
                             )),
@@ -142,15 +142,15 @@ class _SkillSettingsState extends State<SkillSettings> {
   }
 
   void settingsTapped(BuildContext context, int i) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => SkillSettings(
-          section: widget.section,
-          classe: widget.classe,
-        ),
-      ),
-    );
+    // Navigator.push(
+    //   context,
+    //   MaterialPageRoute(
+    //     builder: (context) => SkillSettings(
+    //       section: widget.section,
+    //       classe: widget.classe,
+    //     ),
+    //   ),
+    // );
   }
 
   void deleteTapped(BuildContext context, int i) {
