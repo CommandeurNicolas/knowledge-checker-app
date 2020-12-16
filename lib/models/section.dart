@@ -6,10 +6,11 @@ class Section {
   String desc;
   List<Skill> skills;
 
-  Section(String titre, String desc, String image) {
+  Section(String titre, String desc, String image, List<Skill> skillList) {
     this.titre = titre;
     this.image = image;
     this.desc = desc;
+    this.skills = skillList;
   }
 
   String getTitre() {

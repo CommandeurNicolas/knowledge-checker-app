@@ -5,14 +5,8 @@ import 'package:knowledge_checker/shared/globals.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
 class ClassSettings extends StatelessWidget {
-  List<List<String>> userList = [
-    ["Nicolas", "M1 INFO", "assets/images/user.png"],
-    ["Yoan", "M1 INFO", "assets/images/user.png"],
-    ["Martin", "M1 INFO", "assets/images/user.png"],
-    ["Virgile", "M1 INFO", "assets/images/user.png"],
-    ["Rémi", "M1 INFO", "assets/images/user.png"],
-    ["Benjamain", "M1 INFO", "assets/images/user.png"],
-  ];
+  List<List<String>> userList;
+  ClassSettings({Key key, @required this.userList});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +16,6 @@ class ClassSettings extends StatelessWidget {
         slivers: [
           SliverAppBar(
             backgroundColor: darkblue,
-            collapsedHeight: 100,
             expandedHeight: 250.0,
             floating: false,
             pinned: true,

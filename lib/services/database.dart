@@ -19,11 +19,11 @@ class DatabaseService {
         .collection("sections")
         .getDocuments();
     var documents = documentData.documents;
+
     Map<String, Map<String, Object>> sectionResult = {};
     for (var doc in documents) {
       sectionResult[doc.data['title']] = doc.data;
     }
-    print(sectionResult);
     for (var section in sectionResult.keys) {
       var skillDataDocument = await classCollection
           .document(classe)
@@ -32,19 +32,15 @@ class DatabaseService {
           .collection('skills')
           .getDocuments();
       var skillDocuments = skillDataDocument.documents;
-      Map<String, Object> listSkill = {};
       List<Map<String, Object>> arraySkillList = [];
       for (var skilldoc in skillDocuments) {
+        Map<String, Object> listSkill = {};
         listSkill['title'] = skilldoc.data['title'];
         listSkill['description'] = skilldoc.data['description'];
         arraySkillList.add(listSkill);
       }
       sectionResult[section]["skills"] = arraySkillList;
     }
-
-    print("\n\n\n\n\n");
-    print(sectionResult);
-    print("\n\n\n\n\n");
 
     return sectionResult;
   }
@@ -60,6 +56,9 @@ class DatabaseService {
   Future registerUserData(String email, String username, String password,
       String classe, bool isTeacher) async {
     if (!isTeacher) {
+      await classCollection
+          .document(classe)
+          .updateData({"number": FieldValue.increment(1)});
       var sections = await getSectionsClasses(classe);
       await userCollection.document(uidUser).setData({
         'uid': uidUser,
@@ -67,6 +66,7 @@ class DatabaseService {
         'username': username,
         'password': password,
         'class': classe,
+        'teacher': false
       });
       for (var sectionKey in sections.keys) {
         await userCollection
@@ -100,6 +100,7 @@ class DatabaseService {
         'username': username,
         'password': password,
         'class': classe,
+        'teacher': true
       });
       for (var sectionKey in sections.keys) {
         await teacherCollection
@@ -269,7 +270,7 @@ class DatabaseService {
   }
 
   Future selfValidateSkill(
-      String uid, String sectionTitle, String skillTitle) async {
+      String uid, String sectionTitle, String skillTitle, String classe) async {
     await userCollection
         .document(uid)
         .collection("sections")
@@ -277,6 +278,15 @@ class DatabaseService {
         .collection("skills")
         .document(skillTitle)
         .updateData({"selfValidated": true});
+    await classCollection.document(classe).updateData({
+      "waiting": FieldValue.arrayUnion([
+        {
+          "sectionTitle": sectionTitle,
+          "skillTitle": skillTitle,
+          "uid": uid,
+        }
+      ])
+    });
   }
 
   Future validateSkill(
@@ -288,5 +298,18 @@ class DatabaseService {
         .collection("skills")
         .document(skillTitle)
         .updateData({"validated": true});
+  }
+
+  Future<List<List<String>>> getMemberClass(data) async {
+    var listMemberDocs = await userCollection.where("class").getDocuments();
+    List<List<String>> res = [];
+    for (var document in listMemberDocs.documents) {
+      res.add([
+        document.data['username'],
+        document.data['class'],
+        "assets/images/user.png"
+      ]);
+    }
+    return res;
   }
 }

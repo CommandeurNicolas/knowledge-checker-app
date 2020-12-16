@@ -1,6 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:knowledge_checker/models/section.dart';
 import 'package:knowledge_checker/models/skill.dart';
+import 'package:knowledge_checker/services/database.dart';
 import 'package:knowledge_checker/shared/globals.dart';
 
 class SkillPage extends StatelessWidget {
@@ -8,14 +10,16 @@ class SkillPage extends StatelessWidget {
   Section section;
   bool validation;
   String proof;
-
-  SkillPage({
-    Key key,
-    @required this.skill,
-    @required this.section,
-    @required this.validation,
-    this.proof,
-  });
+  String uid;
+  String classe;
+  SkillPage(
+      {Key key,
+      @required this.skill,
+      @required this.section,
+      @required this.validation,
+      this.proof,
+      @required this.uid,
+      @required this.classe});
 
   final _formKey = GlobalKey<FormState>();
 
@@ -93,7 +97,6 @@ class SkillPage extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: () {
                     if (validation) {
-                      print("text");
                       return Container(
                         // width: 150,
                         child: Text(proof),
@@ -166,7 +169,30 @@ class SkillPage extends StatelessWidget {
                         ),
                       ),
                       RaisedButton(
-                        onPressed: null, // TODO : listener
+                        onPressed: () async {
+                          await DatabaseService()
+                              .userCollection
+                              .document(skill.idOwner)
+                              .collection("sections")
+                              .document(section.titre)
+                              .collection("skills")
+                              .document(skill.titre)
+                              .updateData({"validated": true});
+
+                          await DatabaseService()
+                              .classCollection
+                              .document(classe)
+                              .updateData({
+                            "waiting": FieldValue.arrayRemove([
+                              {
+                                "sectionTitle": section.titre,
+                                "skillTitle": skill.titre,
+                                "uid": skill.idOwner
+                              }
+                            ])
+                          });
+                          Navigator.pop(context);
+                        }, // TODO : listener
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(80.0)),
                         padding: EdgeInsets.all(0.0),
@@ -215,7 +241,10 @@ class SkillPage extends StatelessWidget {
                   child: Padding(
                     padding: EdgeInsets.all(18.0),
                     child: RaisedButton(
-                      onPressed: null, // TODO : listener
+                      onPressed: () async {
+                        await DatabaseService().selfValidateSkill(
+                            uid, section.titre, skill.titre, classe);
+                      }, // TODO : listener
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(80.0)),
                       padding: EdgeInsets.all(0.0),

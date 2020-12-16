@@ -2,10 +2,15 @@ import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:flutter/material.dart';
 import 'package:knowledge_checker/models/section.dart';
 import 'package:knowledge_checker/models/skill.dart';
+import 'package:knowledge_checker/models/user.dart';
 import 'package:knowledge_checker/shared/globals.dart';
 import 'package:knowledge_checker/shared/view_model/skill_page.dart';
+import 'package:provider/provider.dart';
 
 class SkillValidation extends StatefulWidget {
+  List<Section> validationList;
+  String classe;
+  SkillValidation({Key key, this.validationList, this.classe});
   @override
   _SkillValidationState createState() => _SkillValidationState();
 }
@@ -14,57 +19,8 @@ class _SkillValidationState extends State<SkillValidation> {
   final GlobalKey<ExpansionTileCardState> cardA = new GlobalKey();
   final GlobalKey<ExpansionTileCardState> cardB = new GlobalKey();
 
-  final List<Section> sections = [
-    new Section("Java", "assets/images/java.png", [
-      new Skill(1, "titre skill 1", "desc skill 1", false, false),
-      new Skill(2, "titre skill 2", "desc skill 2", false, false),
-      new Skill(3, "titre skill 3", "desc skill 3", false, false)
-    ]),
-    new Section("C", "assets/images/java.png", [
-      new Skill(1, "titre skill 1", "desc skill 1", false, false),
-      new Skill(2, "titre skill 2", "desc skill 2", false, false),
-      new Skill(3, "titre skill 3", "desc skill 3", false, false)
-    ]),
-    new Section("C++", "assets/images/c++.png", [
-      new Skill(1, "titre skill 1", "desc skill 1", false, false),
-      new Skill(2, "titre skill 2", "desc skill 2", false, false),
-      new Skill(3, "titre skill 3", "desc skill 3", false, false),
-      new Skill(1, "titre skill 1", "desc skill 1", false, false),
-      new Skill(2, "titre skill 2", "desc skill 2", false, false),
-      new Skill(3, "titre skill 3", "desc skill 3", false, false),
-      new Skill(1, "titre skill 1", "desc skill 1", false, false),
-      new Skill(2, "titre skill 2", "desc skill 2", false, false),
-      new Skill(3, "titre skill 3", "desc skill 3", false, false),
-      new Skill(1, "titre skill 1", "desc skill 1", false, false),
-      new Skill(2, "titre skill 2", "desc skill 2", false, false),
-      new Skill(3, "titre skill 3", "desc skill 3", false, false),
-      new Skill(1, "titre skill 1", "desc skill 1", false, false),
-      new Skill(2, "titre skill 2", "desc skill 2", false, false),
-      new Skill(3, "titre skill 3", "desc skill 3", false, false),
-      new Skill(1, "titre skill 1", "desc skill 1", false, false),
-      new Skill(2, "titre skill 2", "desc skill 2", false, false),
-      new Skill(3, "titre skill 3", "desc skill 3", false, false),
-    ]),
-    new Section("Lisp", "assets/images/poop.png", [
-      new Skill(1, "titre skill 1", "desc skill 1", false, false),
-      new Skill(2, "titre skill 2", "desc skill 2", false, false),
-      new Skill(3, "titre skill 3", "desc skill 3", false, false)
-    ]),
-    new Section("Python", "assets/images/python.png", [
-      new Skill(1, "titre skill 1", "desc skill 1", false, false),
-      new Skill(2, "titre skill 2", "desc skill 2", false, false),
-      new Skill(3, "titre skill 3", "desc skill 3", false, false)
-    ]),
-    new Section("C#", "assets/images/c#.jpg", [
-      new Skill(1, "titre skill 1", "desc skill 1", false, false),
-      new Skill(2, "titre skill 2", "desc skill 2", false, false),
-      new Skill(3, "titre skill 3", "desc skill 3", false, false)
-    ])
-  ];
-
   @override
   Widget build(BuildContext context) {
-    // print(sections[0].getSkills()[0].getTitre());
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: AppBar(
@@ -80,13 +36,13 @@ class _SkillValidationState extends State<SkillValidation> {
                 padding:
                     const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
                 child: ExpansionTileCard(
-                  leading: Image.asset(sections[index].getImage()),
+                  leading: Image.asset(widget.validationList[index].getImage()),
                   title: Align(
                     alignment: Alignment.centerLeft,
                     child: Padding(
                       padding: const EdgeInsets.only(left: 15.0),
                       child: Text(
-                        sections[index].getTitre(),
+                        widget.validationList[index].getTitre(),
                       ),
                     ),
                   ),
@@ -106,18 +62,20 @@ class _SkillValidationState extends State<SkillValidation> {
                           vertical: 8.0,
                         ),
                         child: Container(
-                          height: 60.0 * sections[index].getSkills().length,
+                          height: 60.0 *
+                              widget.validationList[index].getSkills().length,
                           width: double.infinity,
                           child: ListView.builder(
                             physics: NeverScrollableScrollPhysics(),
-                            itemCount: sections[index].getSkills().length,
+                            itemCount:
+                                widget.validationList[index].getSkills().length,
                             itemBuilder: (context, i) {
                               return GestureDetector(
                                 onTap: () => tapped(
-                                  context,
-                                  sections[index].getSkills()[i],
-                                  sections[index],
-                                ),
+                                    context,
+                                    widget.validationList[index].getSkills()[i],
+                                    widget.validationList[index],
+                                    widget.classe),
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(
                                       vertical: 5.0, horizontal: 20.0),
@@ -134,7 +92,7 @@ class _SkillValidationState extends State<SkillValidation> {
                                             height: 50,
                                             child: Center(
                                                 child: Text(
-                                              "#${sections[index].getSkills()[i].getId()}",
+                                              "#${widget.validationList[index].getSkills()[i].getId()}",
                                               style: TextStyle(
                                                   fontSize: 20,
                                                   color: Colors.white),
@@ -143,7 +101,7 @@ class _SkillValidationState extends State<SkillValidation> {
                                           SizedBox(width: 10),
                                           Expanded(
                                             child: Text(
-                                              sections[index]
+                                              widget.validationList[index]
                                                   .getSkills()[i]
                                                   .getTitre(),
                                             ),
@@ -168,7 +126,7 @@ class _SkillValidationState extends State<SkillValidation> {
                   ],
                 ),
               ),
-              childCount: sections.length,
+              childCount: widget.validationList.length,
             ),
           ),
         ],
@@ -176,7 +134,10 @@ class _SkillValidationState extends State<SkillValidation> {
     );
   }
 
-  void tapped(BuildContext context, Skill skill, Section section) {
+  void tapped(
+      BuildContext context, Skill skill, Section section, String classe) {
+    final user = Provider.of<User>(context);
+
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -185,6 +146,8 @@ class _SkillValidationState extends State<SkillValidation> {
           section: section,
           validation: true,
           proof: "here is the proof that i have the skill !",
+          uid: skill.idOwner,
+          classe: classe,
         ),
       ),
     );

@@ -5,9 +5,9 @@ import 'package:knowledge_checker/shared/globals.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
 class SkillSettings extends StatefulWidget {
-  final Section section;
-
-  SkillSettings({Key key, this.section});
+  Section section;
+  String classe;
+  SkillSettings({Key key, @required this.section, @required this.classe});
 
   @override
   _SkillSettingsState createState() => _SkillSettingsState();
@@ -73,7 +73,6 @@ class _SkillSettingsState extends State<SkillSettings> {
                               setState(() {
                                 isSettings = false;
                               });
-                            print(isSettings);
                           },
                         ),
                       ),
@@ -148,6 +147,7 @@ class _SkillSettingsState extends State<SkillSettings> {
       MaterialPageRoute(
         builder: (context) => SkillSettings(
           section: widget.section,
+          classe: widget.classe,
         ),
       ),
     );
@@ -166,7 +166,10 @@ class _SkillSettingsState extends State<SkillSettings> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => AddSkill(),
+        builder: (context) => AddSkill(
+          classe: widget.classe,
+          section: widget.section,
+        ),
       ),
     );
   }

@@ -15,8 +15,8 @@ import 'package:provider/provider.dart';
 
 class SectionPage extends StatelessWidget {
   final Section section;
-
-  SectionPage({Key key, this.section});
+  final String classe;
+  SectionPage({Key key, this.section, this.classe});
 
   @override
   Widget build(BuildContext context) {
@@ -56,10 +56,8 @@ class SectionPage extends StatelessWidget {
                   skillDoc['title'],
                   skillDoc['description'],
                   skillDoc['selfValidated'],
-                  skillDoc['validated']));
-              print(skillDoc['title'] +
-                  " " +
-                  skillDoc['selfValidated'].toString());
+                  skillDoc['validated'],
+                  null));
             }
 
             return Container(
@@ -109,7 +107,8 @@ class SectionPage extends StatelessWidget {
                     itemExtent: 56.0, // Forcing item height
                     delegate: SliverChildBuilderDelegate(
                       (context, index) => GestureDetector(
-                        onTap: () => tapped(context, index, skillList),
+                        onTap: () =>
+                            tapped(context, index, skillList, user.uid, classe),
                         child: Padding(
                           padding: EdgeInsets.symmetric(
                               vertical: 5.0, horizontal: 20.0),
@@ -155,15 +154,17 @@ class SectionPage extends StatelessWidget {
         });
   }
 
-  void tapped(BuildContext context, int i, List<Skill> skillList) {
+  void tapped(BuildContext context, int i, List<Skill> skillList, String uid,
+      String classe) {
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => SkillPage(
-          skill: skillList[i],
-          section: section,
-          validation: false,
-        ),
+            skill: skillList[i],
+            section: section,
+            validation: false,
+            uid: uid,
+            classe: classe),
       ),
     );
   }

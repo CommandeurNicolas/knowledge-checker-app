@@ -8,61 +8,15 @@ import 'package:knowledge_checker/shared/globals.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
 class SectionSettings extends StatefulWidget {
+  List<Section> sections;
+  String classe;
+  SectionSettings({Key key, this.sections, @required this.classe});
   @override
   _SectionSettingsState createState() => _SectionSettingsState();
 }
 
 class _SectionSettingsState extends State<SectionSettings> {
   bool isSettings = true;
-
-  final List<Section> sections = [
-    new Section("Java", "assets/images/java.png", [
-      new Skill(1, "titre skill 1", "desc skill 1", false, false),
-      new Skill(2, "titre skill 2", "desc skill 2", false, false),
-      new Skill(3, "titre skill 3", "desc skill 3", false, false)
-    ]),
-    new Section("C", "assets/images/java.png", [
-      new Skill(1, "titre skill 1", "desc skill 1", false, false),
-      new Skill(2, "titre skill 2", "desc skill 2", false, false),
-      new Skill(3, "titre skill 3", "desc skill 3", false, false)
-    ]),
-    new Section("C++", "assets/images/c++.png", [
-      new Skill(1, "titre skill 1", "desc skill 1", false, false),
-      new Skill(2, "titre skill 2", "desc skill 2", false, false),
-      new Skill(3, "titre skill 3", "desc skill 3", false, false),
-      new Skill(1, "titre skill 1", "desc skill 1", false, false),
-      new Skill(2, "titre skill 2", "desc skill 2", false, false),
-      new Skill(3, "titre skill 3", "desc skill 3", false, false),
-      new Skill(1, "titre skill 1", "desc skill 1", false, false),
-      new Skill(2, "titre skill 2", "desc skill 2", false, false),
-      new Skill(3, "titre skill 3", "desc skill 3", false, false),
-      new Skill(1, "titre skill 1", "desc skill 1", false, false),
-      new Skill(2, "titre skill 2", "desc skill 2", false, false),
-      new Skill(3, "titre skill 3", "desc skill 3", false, false),
-      new Skill(1, "titre skill 1", "desc skill 1", false, false),
-      new Skill(2, "titre skill 2", "desc skill 2", false, false),
-      new Skill(3, "titre skill 3", "desc skill 3", false, false),
-      new Skill(1, "titre skill 1", "desc skill 1", false, false),
-      new Skill(2, "titre skill 2", "desc skill 2", false, false),
-      new Skill(3, "titre skill 3", "desc skill 3", false, false),
-    ]),
-    new Section("Lisp", "assets/images/poop.png", [
-      new Skill(1, "titre skill 1", "desc skill 1", false, false),
-      new Skill(2, "titre skill 2", "desc skill 2", false, false),
-      new Skill(3, "titre skill 3", "desc skill 3", false, false)
-    ]),
-    new Section("Python", "assets/images/python.png", [
-      new Skill(1, "titre skill 1", "desc skill 1", false, false),
-      new Skill(2, "titre skill 2", "desc skill 2", false, false),
-      new Skill(3, "titre skill 3", "desc skill 3", false, false)
-    ]),
-    new Section("C#", "assets/images/c#.jpg", [
-      new Skill(1, "titre skill 1", "desc skill 1", false, false),
-      new Skill(2, "titre skill 2", "desc skill 2", false, false),
-      new Skill(3, "titre skill 3", "desc skill 3", false, false)
-    ])
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -120,7 +74,6 @@ class _SectionSettingsState extends State<SectionSettings> {
                               setState(() {
                                 isSettings = false;
                               });
-                            print(isSettings);
                           },
                         ),
                       ),
@@ -163,7 +116,7 @@ class _SectionSettingsState extends State<SectionSettings> {
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Image.asset(
-                                sections[index].getImage(),
+                                widget.sections[index].getImage(),
                               ),
                             ),
                           ),
@@ -173,7 +126,7 @@ class _SectionSettingsState extends State<SectionSettings> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  sections[index].getTitre(),
+                                  widget.sections[index].getTitre(),
                                 ),
                                 Text("data")
                               ],
@@ -186,7 +139,7 @@ class _SectionSettingsState extends State<SectionSettings> {
                   ),
                 ),
               ),
-              childCount: sections.length,
+              childCount: widget.sections.length,
             ),
           ),
         ],
@@ -199,7 +152,8 @@ class _SectionSettingsState extends State<SectionSettings> {
       context,
       MaterialPageRoute(
         builder: (context) => SkillSettings(
-          section: sections[i],
+          section: widget.sections[i],
+          classe: widget.classe,
         ),
       ),
     );
@@ -218,7 +172,7 @@ class _SectionSettingsState extends State<SectionSettings> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => AddSection(),
+        builder: (context) => AddSection(classe: widget.classe),
       ),
     );
   }
