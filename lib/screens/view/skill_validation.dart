@@ -36,7 +36,6 @@ class _SkillValidationState extends State<SkillValidation> {
                 padding:
                     const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
                 child: ExpansionTileCard(
-                  leading: Image.asset(widget.validationList[index].getImage()),
                   title: Align(
                     alignment: Alignment.centerLeft,
                     child: Padding(
@@ -93,7 +92,7 @@ class _SkillValidationState extends State<SkillValidation> {
                                             height: 50,
                                             child: Center(
                                                 child: Text(
-                                              "#${index + 1}",
+                                              "#${i + 1}",
                                               style: TextStyle(
                                                   fontSize: 20,
                                                   color: Colors.white),
@@ -110,7 +109,8 @@ class _SkillValidationState extends State<SkillValidation> {
                                           Padding(
                                             padding: const EdgeInsets.only(
                                                 right: 8.0),
-                                            child: Icon(Icons.arrow_forward_ios,
+                                            child: Icon(
+                                                Icons.arrow_forward_ios_rounded,
                                                 color: myblue),
                                           ),
                                         ],

@@ -246,6 +246,7 @@ class SkillPage extends StatelessWidget {
                       onPressed: () async {
                         await DatabaseService().selfValidateSkill(
                             uid, section.titre, skill.titre, classe);
+                        Navigator.pop(context);
                       }, // TODO : listener
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(80.0)),

@@ -53,11 +53,13 @@ class UserPageHeader extends SliverPersistentHeaderDelegate {
                   Positioned(
                     top: 0,
                     left: 40,
-                    child: Image.asset(
-                      image,
-                      width: 120,
-                      fit: BoxFit.fitWidth,
-                      alignment: Alignment.topCenter,
+                    child: CircleAvatar(
+                      radius: 60,
+                      backgroundColor: Colors.white,
+                      child: CircleAvatar(
+                        radius: 57,
+                        backgroundImage: AssetImage(image),
+                      ),
                     ),
                   ),
                   Positioned(
