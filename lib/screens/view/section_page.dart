@@ -56,7 +56,8 @@ class SectionPage extends StatelessWidget {
                   skillDoc['description'],
                   skillDoc['selfValidated'],
                   skillDoc['validated'],
-                  null));
+                  null,
+                  skillDoc['proof']));
             }
 
             return Container(

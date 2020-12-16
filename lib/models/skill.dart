@@ -5,15 +5,17 @@ class Skill {
   bool validated;
   bool autovalidated;
   String idOwner;
+  String proof;
 
   Skill(String titre, String desc, bool selfValidated, bool validated,
-      String idOwner) {
+      String idOwner, String proof) {
     this.titre = titre;
     this.desc = desc;
     this.selfValidated = selfValidated;
     this.validated = validated;
     this.autovalidated = autovalidated;
     this.idOwner = idOwner;
+    this.proof = proof;
   }
 
   String getTitre() {

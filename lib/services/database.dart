@@ -89,6 +89,7 @@ class DatabaseService {
             "description": skill['description'],
             "selfValidated": false,
             "validated": false,
+            "proof": ""
           });
         }
       }
@@ -190,7 +191,8 @@ class DatabaseService {
         "title": skillTitle,
         "description": skillDescription,
         "selfValidated": false,
-        "validated": false
+        "validated": false,
+        "proof": ""
       });
     }
 
@@ -246,7 +248,8 @@ class DatabaseService {
         "title": title,
         "description": description,
         "selfValidated": false,
-        "validated": false
+        "validated": false,
+        "proof": ""
       });
     }
 
@@ -269,21 +272,22 @@ class DatabaseService {
     }
   }
 
-  Future selfValidateSkill(
-      String uid, String sectionTitle, String skillTitle, String classe) async {
+  Future selfValidateSkill(String uid, String sectionTitle, String skillTitle,
+      String classe, String proof) async {
     await userCollection
         .document(uid)
         .collection("sections")
         .document(sectionTitle)
         .collection("skills")
         .document(skillTitle)
-        .updateData({"selfValidated": true});
+        .updateData({"selfValidated": true, "proof": proof});
     await classCollection.document(classe).updateData({
       "waiting": FieldValue.arrayUnion([
         {
           "sectionTitle": sectionTitle,
           "skillTitle": skillTitle,
           "uid": uid,
+          "proof": proof
         }
       ])
     });
