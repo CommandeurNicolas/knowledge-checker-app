@@ -10,16 +10,15 @@ class SkillPage extends StatelessWidget {
   Skill skill;
   Section section;
   bool validation;
-  String proof;
   String uid;
   String classe;
+  String proof;
   SkillPage(
       {Key key,
       @required this.index,
       @required this.skill,
       @required this.section,
       @required this.validation,
-      this.proof,
       @required this.uid,
       @required this.classe});
 
@@ -101,13 +100,16 @@ class SkillPage extends StatelessWidget {
                     if (validation) {
                       return Container(
                         // width: 150,
-                        child: Text(proof),
+                        child: Text(skill.proof),
                       );
                     } else {
                       return Container(
                         // width: 150, // TODO : a revoir
                         height: 500,
-                        child: TextField(
+                        child: TextFormField(
+                          onChanged: (value) {
+                            proof = value;
+                          },
                           maxLines: null,
                           expands: true,
                           keyboardType: TextInputType.multiline,
@@ -179,7 +181,8 @@ class SkillPage extends StatelessWidget {
                               .document(section.titre)
                               .collection("skills")
                               .document(skill.titre)
-                              .updateData({"validated": true});
+                              .updateData(
+                                  {"validated": true, "proof": skill.proof});
 
                           await DatabaseService()
                               .classCollection
@@ -189,7 +192,8 @@ class SkillPage extends StatelessWidget {
                               {
                                 "sectionTitle": section.titre,
                                 "skillTitle": skill.titre,
-                                "uid": skill.idOwner
+                                "uid": skill.idOwner,
+                                "proof": skill.proof
                               }
                             ])
                           });
@@ -245,7 +249,7 @@ class SkillPage extends StatelessWidget {
                     child: RaisedButton(
                       onPressed: () async {
                         await DatabaseService().selfValidateSkill(
-                            uid, section.titre, skill.titre, classe);
+                            uid, section.titre, skill.titre, classe, proof);
                         Navigator.pop(context);
                       }, // TODO : listener
                       shape: RoundedRectangleBorder(

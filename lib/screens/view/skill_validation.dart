@@ -147,7 +147,6 @@ class _SkillValidationState extends State<SkillValidation> {
           skill: skill,
           section: section,
           validation: true,
-          proof: "here is the proof that i have the skill !",
           uid: skill.idOwner,
           classe: classe,
         ),

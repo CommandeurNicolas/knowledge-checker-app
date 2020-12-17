@@ -76,8 +76,14 @@ class _TeacherPageState extends State<TeacherPage> {
                   sectionSkillMap[request['sectionTitle']] = [];
                 }
                 for (var request in waiting) {
+                  print(request);
                   sectionSkillMap[request['sectionTitle']].add(new Skill(
-                      request['skillTitle'], "", false, false, request['uid']));
+                      request['skillTitle'],
+                      "",
+                      false,
+                      false,
+                      request['uid'],
+                      request['proof']));
                 }
                 List<Section> sectionListSend = [];
                 for (var sectionKey in sectionSkillMap.keys) {
@@ -108,6 +114,12 @@ class _TeacherPageState extends State<TeacherPage> {
                       SliverToBoxAdapter(
                         child: GestureDetector(
                           onTap: () async {
+                            for (var sec in sectionListSend) {
+                              for (var skill in sec.skills) {
+                                print("yolo");
+                                print(skill.proof);
+                              }
+                            }
                             tapped(
                                 context,
                                 SkillValidation(
@@ -181,8 +193,13 @@ class _TeacherPageState extends State<TeacherPage> {
                               print(sectionKey);
                               List<Skill> skills = [];
                               for (var skill in temp[sectionKey]["skills"]) {
-                                skills.add(new Skill(skill['title'],
-                                    skill['description'], false, false, ""));
+                                skills.add(new Skill(
+                                    skill['title'],
+                                    skill['description'],
+                                    false,
+                                    false,
+                                    "",
+                                    skill['proof']));
                               }
                               sectionRes.add(new Section(sectionKey, " ",
                                   "assets/images/c++.png", skills));
