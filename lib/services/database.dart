@@ -273,7 +273,7 @@ class DatabaseService {
   }
 
   Future selfValidateSkill(String uid, String sectionTitle, String skillTitle,
-      String classe, String proof) async {
+      String classe, String proof, String skillDescription) async {
     await userCollection
         .document(uid)
         .collection("sections")
@@ -286,6 +286,7 @@ class DatabaseService {
         {
           "sectionTitle": sectionTitle,
           "skillTitle": skillTitle,
+          "skillDescription": skillDescription,
           "uid": uid,
           "proof": proof
         }

@@ -79,7 +79,7 @@ class _TeacherPageState extends State<TeacherPage> {
                   print(request);
                   sectionSkillMap[request['sectionTitle']].add(new Skill(
                       request['skillTitle'],
-                      "",
+                      request['skillDescription'],
                       false,
                       false,
                       request['uid'],
