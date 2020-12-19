@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "876996772987",
-    "project_id": "knowledge-fd40f",
-    "storage_bucket": "knowledge-fd40f.appspot.com"
+    "project_number": "974033021176",
+    "project_id": "knowledge-checker-9347f",
+    "storage_bucket": "knowledge-checker-9347f.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:876996772987:android:c364b569f0bb3a5c344ede",
+        "mobilesdk_app_id": "1:974033021176:android:0c4d52f7e83347c1d4330d",
         "android_client_info": {
           "package_name": "com.knowledge_checker_app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "876996772987-9cvvh4qum0u305lpmbi8dq95lj4qngdm.apps.googleusercontent.com",
+          "client_id": "974033021176-7j7fonhu733ld28jq5bconp80j0o0d78.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDICHr4rF61xKodZx21plLHXB5EK7NDSE0"
+          "current_key": "AIzaSyCyqO7suGhvtpH0bTcMN6fpQCKDtdgQUHY"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "876996772987-9cvvh4qum0u305lpmbi8dq95lj4qngdm.apps.googleusercontent.com",
+              "client_id": "974033021176-7j7fonhu733ld28jq5bconp80j0o0d78.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
