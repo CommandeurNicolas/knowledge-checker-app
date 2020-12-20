@@ -148,7 +148,7 @@ Pour les skills la partie genstion ne fonctionne pas non plus car il faudrait sa
 ***Validation d'une compétence***<br/>
 ![](img_compte_rendu/validation.jpg)
 ***Gestion des sections***<br/>
-![](img_compte_rendu/section_prof.jpg)
+![](img_compte_rendu/skill_prof.jpg)
 ***Gestion des skills d'une section***<br/>
 ![](img_compte_rendu/skill_prof.jpg)
 ***Ajout d'une nouvelle section***<br/>
@@ -157,3 +157,7 @@ Pour les skills la partie genstion ne fonctionne pas non plus car il faudrait sa
 ![](img_compte_rendu/new_skill.jpg)
 ***Gestion de la classe***<br/>
 ![](img_compte_rendu/classe_prof.jpg)
+
+# Conclusion
+Projet intéressant, mais complexe au niveau de la mise en place serveur/application. Il manque peut-être dans le cours un aperçu des techniques qu'on peut utiliser pour la mise en place serveur. 
+Le développement au début du projet s'est fait difficilement, les choix des technologies étant vaste. La réflexion autour de l'UI pour que l'utilisateur reste sur l'application est un bon début pour le prochain cours d'UX que l'on va avoir.
