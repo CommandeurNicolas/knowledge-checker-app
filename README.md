@@ -80,15 +80,15 @@ Nous avions pensé à faire une API REST en Node/PHP/Laravel avec une base de do
 Nous avons imaginé quelques points pour améliorer l'application. Nous les avons découpé en plusieurs catégories (certains points se retrouvent dans plusieurs catégories) :
 
 ## Changements visuels
-* (Partie étudiant) Changer la couleur d'un skill en fonction de son état
-<br/>
-**Rien**<br/>
+* (Partie étudiant) Changer la couleur d'un skill en fonction de son état<br/>
+
+***Rien***<br/>
 ![](img_compte_rendu/rien.jpg)
-**Envoyé à validation**<br/>
+***Envoyé à validation***<br/>
 ![](img_compte_rendu/envoye.jpg)
-**Validé**<br/>
+***Validé***<br/>
 ![](img_compte_rendu/valide.jpg)
-**Refusé**<br/>
+***Refusé***<br/>
 ![](img_compte_rendu/refuse.jpg)
 * Ajouter une indication pour montrer à l'utilisateur qu'il à rentré le mauvais mot de passe / username
 * Ajouter un petit icon pour indiquer que l'utilisateur n'est pas connecté à internet et qu'il ne pourra donc pas demander / recevoir de nouvelles données
