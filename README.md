@@ -148,7 +148,7 @@ Pour les skills la partie genstion ne fonctionne pas non plus car il faudrait sa
 ***Validation d'une compétence***<br/>
 ![](img_compte_rendu/validation.jpg)
 ***Gestion des sections***<br/>
-![](img_compte_rendu/skill_prof.jpg)
+![](img_compte_rendu/section_prof.jpg)
 ***Gestion des skills d'une section***<br/>
 ![](img_compte_rendu/skill_prof.jpg)
 ***Ajout d'une nouvelle section***<br/>
