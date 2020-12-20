@@ -107,7 +107,7 @@ Nous avons imaginé quelques points pour améliorer l'application. Nous les avon
 * Possibilité pour le prof de créer une nouvelle promo/classe et d'y ajouter des élèves.
 
 ## Implémentation de fonctionnalitées pour des visuels déjà présents
-* Dans les pages de gestion des Sections et des Skills, on peut retrouver deux bouton pour changer entre un mode de gestion et un mode de suppression
+* Dans les pages de gestion des Sections et des Skills, on peut retrouver deux bouton pour changer entre un mode de gestion et un mode de suppression<br/>
 ![](img_compte_rendu/gestion_suppression_2.jpg)<br/>
 ![](img_compte_rendu/gestion_skill.jpg)<br/>
 ![](img_compte_rendu/gestion_suppression.jpg)<br/>
