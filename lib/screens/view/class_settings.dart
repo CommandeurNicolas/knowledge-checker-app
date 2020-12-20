@@ -95,7 +95,11 @@ class ClassSettings extends StatelessWidget {
                         padding: const EdgeInsets.all(10.0),
                         child: CircleAvatar(
                           radius: 50,
-                          backgroundImage: AssetImage(userList[index][2]),
+                          backgroundColor: Colors.white,
+                          child: CircleAvatar(
+                            radius: 47,
+                            backgroundImage: AssetImage(userList[index][2]),
+                          ),
                         ),
                       )
                     ],
