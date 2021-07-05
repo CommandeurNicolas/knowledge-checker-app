@@ -1,13 +1,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:knowledge_checker/screens/Auth/sign_in.dart';
-import 'package:knowledge_checker/screens/Auth/signup.dart';
+import 'package:knowledge_checker/screens/auth/sign_up.dart';
 import 'package:knowledge_checker/services/auth.dart';
-import 'package:knowledge_checker/view_model/href_text.dart';
-
-import 'sign_in.dart';
-import '../../view_model/decoration_shapes.dart';
-import '../../globals.dart';
+import 'package:knowledge_checker/services/database.dart';
+import 'package:knowledge_checker/shared/view_model/href_text.dart';
+import 'package:knowledge_checker/shared/decoration_shapes.dart';
+import 'package:knowledge_checker/shared/globals.dart';
 
 class LogIn extends StatefulWidget {
   final Function toogleView;
@@ -48,14 +46,14 @@ class _LogInState extends State<LogIn> {
                       children: <Widget>[
                         Text(
                           "Hello !",
-                          style: TextStyle(color: darkblue, fontSize: 40),
+                          style: TextStyle(color: myblue, fontSize: 40),
                         ),
                         SizedBox(
                           height: 10,
                         ),
                         Text(
                           "Welcome",
-                          style: TextStyle(color: darkblue, fontSize: 18),
+                          style: TextStyle(color: myblue, fontSize: 18),
                         ),
                       ],
                     ),
@@ -187,9 +185,9 @@ class _LogInState extends State<LogIn> {
                                   margin: EdgeInsets.only(right: 60.0),
                                   child: RaisedButton(
                                     onPressed: () async {
-                                      if (_formKey.currentState.validate()) {
+                                      if (_formKey.currentState.validate() && (await DatabaseService().getEmailByUsername(username)!=null)) {
                                         dynamic result = await _auth.login(
-                                            email, password, username);
+                                            username,password);
                                         if (result == null) {
                                           setState(() {
                                             error = 'Error';
@@ -205,7 +203,7 @@ class _LogInState extends State<LogIn> {
                                     child: Ink(
                                       decoration: BoxDecoration(
                                         gradient: LinearGradient(
-                                          colors: [darkblue, mygreen],
+                                          colors: [myblue, mygreen],
                                           begin: Alignment.centerLeft,
                                           end: Alignment.centerRight,
                                         ),
